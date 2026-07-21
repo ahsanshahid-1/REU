@@ -1,0 +1,151 @@
+/* ============================================================
+   THEME SYSTEM — OFFICIAL UA LITTLE ROCK BRAND
+   Source: https://ualr.edu/communications/colors/
+   Primary   : Maroon #6E2639 (PMS 209c), Silver #A7A9AC (PMS 877c)
+   Secondary : Light Maroon #98344F, Dark Maroon #4C1A27,
+               Light Grey #EEEEEE, Dark Grey #333333
+   Tertiary  : Gold #FFBF00, Daffodil #FFE579 (used sparingly,
+               per the brand guide's moderation rule)
+   ------------------------------------------------------------
+   Architecture: raw brand scales are private (--_*); semantic
+   tokens are the only API components consume. Mode resolution
+   uses color-scheme + light-dark(): the OS preference is
+   honored with ZERO JavaScript on first paint. Explicit user
+   choice = one root class (.light / .dark). New themes = one
+   root class overriding semantic tokens.
+
+   Contrast (WCAG 2.1 AA) verified pairings:
+   LIGHT  fg-primary #333333 on canvas #F4F4F4     = 11.6:1
+          fg-primary #333333 on surface #FFFFFF    = 12.6:1
+          fg-secondary #4E4E4E on surface #FFFFFF  =  8.5:1
+          fg-muted #5F5F60 on surface #FFFFFF      =  6.4:1
+          link #6E2639 (brand maroon) on #FFFFFF   = 10.5:1
+          action-primary-fg #FFFFFF on #6E2639     = 10.5:1
+          accent-strong #4C1A27 on subtle #F5EAEE  = 12.3:1
+   DARK   fg-primary #EEEEEE on canvas #1B181A     = 13.9:1
+          fg-secondary #C9C9CB on surface #262225  =  9.2:1
+          fg-muted #A7A9AC (brand silver) on #262225 = 6.1:1
+          link #D9A0B2 on canvas #1B181A           =  8.4:1
+          action-primary-fg #2A1119 on #C98BA0     =  6.9:1
+   Dark mode note: the brand guide warns maroon-on-black fails
+   contrast, so dark mode uses maroon TINTS for interactive
+   elements and full maroon only as large surface fills.
+   ============================================================ */
+
+:root {
+  /* ---- 1. RAW BRAND SCALES (private) ---- */
+  --_maroon:        #6E2639;  /* official primary */
+  --_maroon-light:  #98344F;  /* official secondary */
+  --_maroon-dark:   #4C1A27;  /* official secondary */
+  --_maroon-tint-1: #C98BA0;  /* derived tint for dark-mode actions */
+  --_maroon-tint-2: #D9A0B2;  /* derived tint for dark-mode links */
+  --_maroon-wash:   #F5EAEE;  /* derived wash for subtle fills */
+  --_silver:        #A7A9AC;  /* official primary */
+  --_grey-light:    #EEEEEE;  /* official secondary */
+  --_grey-dark:     #333333;  /* official secondary */
+  --_gold:          #FFBF00;  /* official tertiary — sparingly */
+  --_daffodil:      #FFE579;  /* official tertiary — sparingly */
+
+  /* ---- 2. SEMANTIC TOKENS (public API) ----
+     Light fallbacks first, for browsers without light-dark(). */
+
+  color-scheme: light dark;
+
+  --bg-canvas:    #F4F4F4;
+  --bg-surface:   #FFFFFF;
+  --bg-elevated:  #FFFFFF;
+  --bg-inset:     #EEEEEE;
+  --bg-inverse:   #6E2639;   /* brand maroon as the dark band color */
+
+  --fg-primary:   #333333;
+  --fg-secondary: #4E4E4E;
+  --fg-muted:     #5F5F60;
+  --fg-inverse:   #FFFFFF;
+  --fg-inverse-muted: #E3CBD3;
+
+  --link:                 #6E2639;
+  --link-hover:           #4C1A27;
+  --action-primary-bg:    #6E2639;
+  --action-primary-fg:    #FFFFFF;
+  --action-primary-hover: #4C1A27;
+  --action-secondary-border: #6E2639;
+  --action-secondary-fg:  #6E2639;
+  --action-secondary-hover-bg: #F5EAEE;
+
+  --accent-subtle: #F5EAEE;
+  --accent-strong: #4C1A27;
+  --accent-line:   #98344F;
+  --accent-gold:   #FFBF00;
+
+  --border-default: #D8D9DB;   /* silver family */
+  --border-strong:  #A7A9AC;   /* brand silver */
+  --focus-ring:     #6E2639;
+
+  --status-success-fg: #1C6E48;
+  --status-success-bg: #E3F4EB;
+  --status-danger-fg:  #A63A2B;
+  --status-danger-bg:  #FBEAE6;
+  --status-warn-fg:    #6B4E00;
+  --status-warn-bg:    #FFF4CC;  /* daffodil family */
+
+  --shadow-1: 0 1px 3px rgba(51,51,51,.10), 0 6px 20px rgba(51,51,51,.06);
+  --shadow-2: 0 12px 32px rgba(51,51,51,.16);
+
+  /* ---- 3. MODE RESOLUTION via light-dark() ---- */
+  --bg-canvas:    light-dark(#F4F4F4, #1B181A);
+  --bg-surface:   light-dark(#FFFFFF, #262225);
+  --bg-elevated:  light-dark(#FFFFFF, #2E292C);
+  --bg-inset:     light-dark(#EEEEEE, #211D1F);
+  --bg-inverse:   light-dark(#6E2639, #4C1A27);
+
+  --fg-primary:   light-dark(#333333, #EEEEEE);
+  --fg-secondary: light-dark(#4E4E4E, #C9C9CB);
+  --fg-muted:     light-dark(#5F5F60, #A7A9AC);
+  --fg-inverse:   light-dark(#FFFFFF, #EEEEEE);
+  --fg-inverse-muted: light-dark(#E3CBD3, #D9A0B2);
+
+  --link:                 light-dark(#6E2639, #D9A0B2);
+  --link-hover:           light-dark(#4C1A27, #E9C1CE);
+  --action-primary-bg:    light-dark(#6E2639, #C98BA0);
+  --action-primary-fg:    light-dark(#FFFFFF, #2A1119);
+  --action-primary-hover: light-dark(#4C1A27, #D9A0B2);
+  --action-secondary-border: light-dark(#6E2639, #C98BA0);
+  --action-secondary-fg:  light-dark(#6E2639, #D9A0B2);
+  --action-secondary-hover-bg: light-dark(#F5EAEE, #3A2530);
+
+  --accent-subtle: light-dark(#F5EAEE, #3A2530);
+  --accent-strong: light-dark(#4C1A27, #D9A0B2);
+  --accent-line:   light-dark(#98344F, #C98BA0);
+  --accent-gold:   light-dark(#FFBF00, #FFD24D);
+
+  --border-default: light-dark(#D8D9DB, #3B3538);
+  --border-strong:  light-dark(#A7A9AC, #6E686B);
+  --focus-ring:     light-dark(#6E2639, #D9A0B2);
+
+  --status-success-fg: light-dark(#1C6E48, #7FD3A8);
+  --status-success-bg: light-dark(#E3F4EB, #12291D);
+  --status-danger-fg:  light-dark(#A63A2B, #F0A093);
+  --status-danger-bg:  light-dark(#FBEAE6, #33170F);
+  --status-warn-fg:    light-dark(#6B4E00, #FFE579);
+  --status-warn-bg:    light-dark(#FFF4CC, #2E2508);
+
+  --shadow-1: light-dark(
+    0 1px 3px rgba(51,51,51,.10),
+    0 1px 3px rgba(0,0,0,.55));
+  --shadow-2: light-dark(
+    0 12px 32px rgba(51,51,51,.16),
+    0 12px 32px rgba(0,0,0,.6));
+}
+
+:root.light { color-scheme: light; }
+:root.dark  { color-scheme: dark;  }
+
+/* ---- 4. FUTURE THEME EXTENSION POINT ----
+:root.theme-highcontrast {
+  color-scheme: light;
+  --bg-canvas: #FFFFFF;
+  --fg-primary: #000000;
+  --action-primary-bg: #000000;
+  --border-default: #000000;
+}
+*/

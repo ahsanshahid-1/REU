@@ -1,0 +1,2 @@
+REU site running on http://localhost:3000
+Admin token: prodsecret123 (from env)

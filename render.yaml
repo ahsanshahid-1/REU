@@ -1,0 +1,21 @@
+# One-click Render blueprint. In the Render dashboard: New > Blueprint,
+# point it at your repo, and this provisions the service + disk.
+services:
+  - type: web
+    name: reu-site
+    runtime: node
+    plan: starter            # $7/mo: always-on + persistent disk. Use 'free' only for a throwaway demo (no disk, sleeps).
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_TOKEN
+        generateValue: true   # Render generates a strong secret; view it in the dashboard.
+      - key: SESSION_SECRET
+        generateValue: true
+    disk:
+      name: reu-data
+      mountPath: /app/data    # SQLite db + transcript PDFs persist here.
+      sizeGB: 1
