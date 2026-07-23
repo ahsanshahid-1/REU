@@ -5,12 +5,14 @@ services:
     name: reu-site
     runtime: node
     plan: starter            # $7/mo: always-on + persistent disk. Use 'free' only for a throwaway demo (no disk, sleeps).
-    buildCommand: npm install
+    # Clean install so the native better-sqlite3 binary is always rebuilt for the
+    # current Node version (avoids stale-cache NODE_MODULE_VERSION mismatches).
+    buildCommand: rm -rf node_modules && npm install
     startCommand: node server.js
     healthCheckPath: /api/health
     envVars:
-      - key: NODE_VERSION    # pin Node to an LTS with better-sqlite3@12 prebuilt binaries (also in .node-version)
-        value: 22.11.0
+      - key: NODE_VERSION    # keep build + runtime on the SAME Node major (24) so the compiled binary matches
+        value: "24"
       - key: NODE_ENV
         value: production
       - key: ADMIN_TOKEN
