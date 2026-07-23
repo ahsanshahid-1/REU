@@ -9,6 +9,8 @@ services:
     startCommand: node server.js
     healthCheckPath: /api/health
     envVars:
+      - key: NODE_VERSION    # pin Node to an LTS with better-sqlite3@12 prebuilt binaries (also in .node-version)
+        value: 22.11.0
       - key: NODE_ENV
         value: production
       - key: ADMIN_TOKEN
