@@ -47,6 +47,36 @@ Railway and Fly.io work the same way (both offer volumes). A plain
 university VM also works: `git clone`, `npm install`, run under systemd or
 pm2 behind nginx with a Let's Encrypt certificate.
 
+## 3a. Email (verification codes + submission confirmations)
+
+Transactional email is delivered by the Email_Service (`lib/email.js`), a thin
+nodemailer wrapper configured entirely from environment variables — no
+credentials are hard-coded. It runs in one of three modes:
+
+- **SMTP mode** — set `SMTP_HOST` (and the related vars below) and real mail is
+  sent through that relay.
+- **Dev-echo mode** — no `SMTP_HOST` plus `DEV_ECHO_CODES=1`: nothing is sent
+  and the verification code is surfaced for local testing (the workflow in
+  section 1). Never enable in production.
+- **Fail-safe mode** — no `SMTP_HOST` and not dev-echo: a required send fails,
+  so production can never silently report success without actually emailing.
+
+Environment variables (see `.env.example`):
+
+| Variable | Purpose | Example |
+|----------|---------|---------|
+| `SMTP_HOST` | SMTP server hostname (enables SMTP mode) | `smtp.example.edu` |
+| `SMTP_PORT` | SMTP port | `587` (STARTTLS) or `465` (TLS) |
+| `SMTP_SECURE` | Implicit TLS on connect | `true` for 465, `false` for 587/25 |
+| `SMTP_USER` | SMTP auth username | `reu-mailer` |
+| `SMTP_PASS` | SMTP auth password | (secret) |
+| `MAIL_FROM` | `From:` header on outgoing mail | `UA Little Rock REU <reu@ualr.edu>` |
+
+Every required-email attempt is recorded in the `email_log` table
+(`to_email, kind, status, error, created_at`) so a delivery failure is
+auditable; a failed required send blocks the operation that requested it and
+never leaks internal error detail to the applicant.
+
 ## 4. Moving to PostgreSQL (when IT asks for it)
 
 Universities often require a managed database for systems holding student
@@ -74,14 +104,22 @@ INSERTs (or use pgloader, which automates SQLite → Postgres).
 - [ ] Replace every [bracketed placeholder] in index.html, apply.html,
       account.html (PI name, contact email, research areas, dates).
 - [ ] Set a strong `ADMIN_TOKEN`; never enable `DEV_ECHO_CODES`.
-- [ ] Wire real email in `sendVerificationEmail()` in server.js
-      (nodemailer + the UALR SMTP relay, or SES/SendGrid). The same hook
-      pattern applies for the submission-confirmation email.
-- [ ] HTTPS only (any of the hosts above provide it automatically).
+- [ ] Configure real email: set `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`,
+      `SMTP_USER`, `SMTP_PASS`, and `MAIL_FROM` (UALR SMTP relay, or SES/
+      SendGrid) so the Email_Service (`lib/email.js`) sends verification codes
+      and submission confirmations. See section 3a.
+- [ ] HTTPS only, and always paired with `NODE_ENV=production`. The hosts
+      above terminate TLS automatically; the session cookie is only marked
+      `Secure` when `NODE_ENV=production`, so set both together (Req 20.4).
+- [ ] Confirm the service is up via its single start command (`npm start`,
+      i.e. `node server.js`) and the health endpoint: `curl https://<url>/api/health`
+      returns `{"ok":true}` (Req 20.1).
 - [ ] Schedule backups of `data/` (contains applicant personal data;
       restrict access and set a retention policy with your IRB/registrar
       guidance).
 - [ ] Ask UALR IT for a ualr.edu subdomain and, when ready, the Azure AD
       app registration for campus SSO (mount point: /auth/sso in server.js).
-- [ ] After award: furnish the site URL to the cognizant NSF program
-      officer within 90 days, per the solicitation.
+- [ ] After award: furnish the live site URL to the cognizant NSF program
+      officer (the PO on the award notice) by email from the PI, citing the
+      award number, **within 90 days of the award notification** — see the
+      step-by-step procedure in DEPLOY.md ("Furnishing the site URL to NSF").
