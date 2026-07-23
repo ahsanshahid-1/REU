@@ -2,18 +2,35 @@
 
 ## 1. Run it locally (2 minutes)
 
-Requirements: Node.js 18+.
+**Prerequisites:**
+- **Node.js 20+** (Node 20 or 22 LTS recommended — `better-sqlite3@12` requires
+  Node 20.x/22.x/23.x/24.x). Verify with `node -v`.
+- **npm** (bundled with Node).
+- Only if `npm install` can't fetch a prebuilt `better-sqlite3` binary and must
+  compile it: a C/C++ toolchain + Python 3 (`xcode-select --install` on macOS,
+  `build-essential python3` on Debian/Ubuntu, VS Build Tools "Desktop
+  development with C++" on Windows). On common platforms this is not needed.
 
 ```bash
 cd reu-site
-npm install
+npm install                                   # installs runtime + test deps
 ADMIN_TOKEN=choose-a-long-secret DEV_ECHO_CODES=1 npm start
 ```
 
-Open http://localhost:3000. Create an account (any email), open the browser
-console to see the dev verification code (also printed in the server
-terminal), verify, and submit a test application. Review it at
-http://localhost:3000/admin.html with your ADMIN_TOKEN.
+`npm install` downloads all dependencies: runtime (`express`, `better-sqlite3`,
+`bcryptjs`, `cookie-parser`, `multer`, `nodemailer`) and test (`fast-check`,
+`supertest`, `node-html-parser`); the test runner is Node's built-in
+`node:test`.
+
+Note: env vars are read from the process environment — there is **no `dotenv`**,
+so a `.env` file is not auto-loaded. Pass variables inline (as above) or
+`export` them in your shell first.
+
+Open http://localhost:3000. Create an account (any **`.edu`** email — non-`.edu`
+addresses are rejected at registration), open the browser console to see the
+dev verification code (also printed in the server terminal), verify, and submit
+a test application. Review it at http://localhost:3000/admin.html with your
+ADMIN_TOKEN. Run the test suite with `npm test`.
 
 ## 2. The database: how it works
 

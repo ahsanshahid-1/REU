@@ -6,14 +6,57 @@ review panel, and a light/dark theming system.
 
 ## Run locally
 
+### Prerequisites
+
+- **Node.js 20 or newer** (Node 20 LTS or 22 LTS recommended). Required because
+  `better-sqlite3@12` supports Node `20.x/22.x/23.x/24.x`. Check with `node -v`.
+- **npm** (ships with Node).
+- **A C/C++ build toolchain + Python 3**, needed *only if* `npm install` cannot
+  download a prebuilt `better-sqlite3` binary for your platform and has to
+  compile it from source:
+  - macOS: `xcode-select --install`
+  - Debian/Ubuntu: `sudo apt-get install -y build-essential python3`
+  - Windows: install the "Desktop development with C++" workload (Visual Studio
+    Build Tools). On common platforms a prebuilt binary is used and no toolchain
+    is needed.
+
+### Install dependencies
+
 ```bash
 npm install
-ADMIN_TOKEN=choose-a-long-secret npm start
+```
+
+That single command downloads everything. Runtime dependencies:
+`express`, `better-sqlite3`, `bcryptjs`, `cookie-parser`, `multer`, `nodemailer`.
+Dev/test dependencies (installed too): `fast-check`, `supertest`,
+`node-html-parser`. The test runner itself is Node's built-in `node:test` — no
+extra install. No global tools are required.
+
+### Start the server
+
+```bash
+ADMIN_TOKEN=choose-a-long-secret DEV_ECHO_CODES=1 npm start
 # open http://localhost:3000
 ```
 
-If you do not set `ADMIN_TOKEN`, a random one is generated and printed at
-startup (it changes on every restart, so set it for real use).
+- Env vars are read from the **process environment** — there is no `dotenv`, so
+  a `.env` file is NOT auto-loaded. Set variables inline (as above) or `export`
+  them first. `npm start` runs `node server.js`.
+- `ADMIN_TOKEN` — the admin/staff key for `/admin.html`. If unset, a random one
+  is generated and printed at startup (it changes on every restart, so set it).
+- `DEV_ECHO_CODES=1` — local only: surfaces the 6-digit email verification code
+  in the API response and browser console so you can verify an account without
+  configuring SMTP. Never set it in production.
+- On first start the app auto-creates `data/applications.db` and `data/uploads/`
+  (no database to install).
+
+Quick check: `curl http://localhost:3000/api/health` returns `{"ok":true}`.
+
+### Run the tests (optional)
+
+```bash
+npm test        # runs node --test over the test/ suite (196 tests)
+```
 
 ## Structure
 
