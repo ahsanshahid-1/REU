@@ -193,3 +193,10 @@ footer .fine{border-top:1px solid color-mix(in srgb,var(--fg-inverse) 12%,transp
 
 a.card{color:var(--fg-primary)}
 a.card:hover{color:var(--fg-primary)}
+
+
+/* content-readiness: consistent "published upon award" treatment (Req 18.3)
+   and finalized content slots (Req 18.2). Kept subtle so the withheld
+   statement reads as a note, not a broken placeholder. */
+.placeholder[data-state="withheld-until-award"]{font-style:italic}
+.slot-note[data-state="finalized"]{font-style:normal}

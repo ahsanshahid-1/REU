@@ -46,4 +46,16 @@ CREATE TABLE IF NOT EXISTS applications (
   status           TEXT NOT NULL DEFAULT 'received'
 );
 
+-- Records every required-email attempt (verification / confirmation) so a
+-- delivery failure is auditable and the requesting operation can be reported
+-- truthfully. Intentionally minimal: no message bodies or codes are stored.
+CREATE TABLE IF NOT EXISTS email_log (
+  id         SERIAL PRIMARY KEY,
+  to_email   TEXT NOT NULL,
+  kind       TEXT NOT NULL,               -- 'verification' | 'confirmation'
+  status     TEXT NOT NULL,               -- 'sent' | 'failed' | 'dev-echo'
+  error      TEXT,                         -- internal detail (never shown to applicant)
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
 CREATE INDEX IF NOT EXISTS idx_sessions_expiry ON sessions(expires_at);

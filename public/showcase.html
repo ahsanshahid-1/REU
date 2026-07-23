@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Participant Showcase | NSF REU Site at UA Little Rock</title>
+<meta name="description" content="Cohort participants of the UA Little Rock NSF REU, shown by home institution and academic year. Published after the program begins.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/theme.css">
+<link rel="stylesheet" href="/styles/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="nav-inner">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect x="1.5" y="1.5" width="33" height="33" rx="6" fill="var(--action-primary-bg)"/>
+        <text x="18" y="23.5" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="12.5" fill="var(--action-primary-fg)">REU</text>
+      </svg>
+      <span>
+        <span class="t1">NSF REU Site</span>
+        <span class="t2">UA Little Rock</span>
+      </span>
+    </a>
+    <nav aria-label="Main">
+      <!-- Showcase is intentionally NOT linked here until it is enabled with cohort data (Req 19.3). -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Overview</a></li>
+        <li><a href="/research.html">Research</a></li>
+        <li><a href="/eligibility.html">Eligibility &amp; Funding</a></li>
+        <li><a href="/faq.html">Dates &amp; FAQ</a></li>
+        <li><a href="/account.html">Account</a></li>
+      </ul>
+    </nav>
+    <div class="nav-tools">
+      <button id="theme-btn" type="button" aria-label="Switch color theme">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <button id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <a class="btn btn-primary" href="/apply.html">Apply</a>
+    </div>
+  </div>
+</header>
+<main id="main">
+<section id="showcase">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Participant showcase</span>
+      <h2>Meet the cohort</h2>
+      <p>After the program begins, this page presents each participant by home institution and academic year, alongside their projects, symposium presentations, publications, and outcomes.</p>
+    </div>
+
+    <!-- Default (no-JS and pre-fetch) state: forthcoming. This is the safe
+         state — no participant data is ever embedded in the page markup; it is
+         fetched from /api/showcase and only rendered when enabled with data. -->
+    <div id="showcase-forthcoming" class="callout info" style="max-width:760px">
+      <strong>Published upon award.</strong> The participant showcase is forthcoming. Once the program is underway and the cohort is confirmed, participants will appear here with their home institution and academic year.
+    </div>
+
+    <div id="showcase-list" class="grid grid-3" hidden aria-live="polite"></div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div style="display:flex;gap:16px;align-items:flex-start">
+        <div class="badge-nsf">NSF</div>
+        <p>This program is proposed as a Research Experiences for Undergraduates (REU) Site under NSF solicitation 23-601. Upon award, this material will be based upon work supported by the National Science Foundation. Any opinions, findings, and conclusions or recommendations expressed on this site are those of the program team and do not necessarily reflect the views of the National Science Foundation.</p>
+      </div>
+      <div>
+        <h3>Program</h3>
+        <ul>
+          <li><a href="/eligibility.html">Eligibility</a></li>
+          <li><a href="/apply.html">Apply</a></li>
+          <li><a href="/account.html">Account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>NSF resources</h3>
+        <ul>
+          <li><a class="ext" href="https://etap.nsf.gov" rel="noopener">NSF ETAP</a></li>
+          <li><a class="ext" href="https://www.nsf.gov/crssprgm/reu/reu_search.cfm" rel="noopener">REU Site directory</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine">University of Arkansas at Little Rock &middot; Participants are shown with home institution and academic year only; internal application materials are never published here.</div>
+  </div>
+</footer>
+
+<script src="/js/site.js" defer></script>
+<script src="/js/chat.js" defer></script>
+<script>
+// Fetch the read-only showcase projection. The page ships in the "forthcoming"
+// state; participant cards are rendered ONLY when the API reports the showcase
+// as enabled with data (Req 19.2, 19.3). The API guarantees the projection
+// contains home institution + academic year only.
+(function () {
+  var forthcoming = document.getElementById('showcase-forthcoming');
+  var list = document.getElementById('showcase-list');
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  fetch('/api/showcase', { headers: { Accept: 'application/json' } })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (!data || !data.enabled || !Array.isArray(data.participants) || !data.participants.length) {
+        return; // stay in forthcoming state
+      }
+      list.innerHTML = data.participants.map(function (p) {
+        return '<div class="card">' +
+          '<h3 style="margin-top:0">' + esc(p.institution) + '</h3>' +
+          '<p>' + esc(p.academicYear) + '</p>' +
+          '</div>';
+      }).join('');
+      forthcoming.hidden = true;
+      list.hidden = false;
+    })
+    .catch(function () { /* keep forthcoming state on any error */ });
+})();
+</script>
+</body>
+</html>
