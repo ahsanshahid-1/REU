@@ -80,8 +80,8 @@ const FINALIZED_CONTENT = {
     'Feb 15, 2027',           // program-dates (close)
     '$700 / week',            // stipend-amount
     '10 per year',            // cohort-size
-    'Ten students',           // cohort-size
-    'Materials science, data science, computing', // research-fields
+    'ten students',           // cohort-size
+    'Artificial intelligence, cybersecurity, data science', // research-fields
     CONTACT_EMAIL,            // program-contact-email
     '(501) 916-3000',         // program-phone
   ],
@@ -90,12 +90,12 @@ const FINALIZED_CONTENT = {
     'Nov 1, 2026',            // program-dates (open)
     'Feb 15, 2027',           // program-dates (deadline)
     'Mar 20, 2027',           // program-dates (decisions)
-    'Aug 6, 2027',            // program-dates (in residence end)
+    'Jul 24, 2027',           // program-dates (in residence end)
     CONTACT_EMAIL,
     '(501) 916-3000',
   ],
   'eligibility.html': [
-    '$7,000',                 // stipend-amount (10-week total)
+    '$5,600',                 // stipend-amount (8-week total)
     '$700 per week',          // stipend-amount (rate)
     CONTACT_EMAIL,
   ],
@@ -164,9 +164,9 @@ test('each withheld-until-award key renders the consistent statement on its decl
   const expectations = [
     { key: 'pi-direct-contact', page: 'index.html' },
     { key: 'pi-direct-contact', page: 'faq.html' },
-    { key: 'named-mentor-profiles', page: 'research.html' },
-    { key: 'research-project-details', page: 'research.html' },
-    // footer fine print repeats named-mentor-profiles on every page
+    // Research now publishes the finalized mentor roster and project pathways,
+    // so its withheld markers were removed. The footer fine print still repeats
+    // named-mentor-profiles on the remaining pages.
     { key: 'named-mentor-profiles', page: 'index.html' },
     { key: 'named-mentor-profiles', page: 'eligibility.html' },
     { key: 'named-mentor-profiles', page: 'faq.html' },

@@ -91,8 +91,8 @@ test('7.1 presents the DECISION-notification date', () => {
 
 test('7.1 presents the PROGRAM dates', () => {
   assertContains(/program in residence|in residence|program dates/i, 'missing a program-dates milestone');
-  assertContains(/jun\w*\.?\s*1\s*(?:to|-|–|—)\s*aug\w*\.?\s*6,?\s*2027/i,
-    'missing the ten-week program dates (Jun 1 to Aug 6, 2027)');
+  assertContains(/jun\w*\.?\s*1\s*(?:to|-|–|—)\s*jul\w*\.?\s*24,?\s*2027/i,
+    'missing the eight-week program dates (Jun 1 to Jul 24, 2027)');
 });
 
 // ---------------------------------------------------------------------------

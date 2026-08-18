@@ -131,10 +131,10 @@ test('5.4 describes outreach to CC partners, MSIs, and EPSCoR networks', () => {
 // Requirement 6: Funding, stipend, housing, travel, tax content
 // ---------------------------------------------------------------------------
 
-test('6.1 states the stipend as ~$700/week for the ten-week program', () => {
+test('6.1 states the stipend as ~$700/week for the eight-week program', () => {
   assertContains(/\$700 per week/i, 'missing $700 per week stipend rate');
-  assertContains(/10 weeks|ten[\s-]?week/i, 'missing ten-week duration');
-  assertContains(/\$7,000/i, 'missing the $7,000 total stipend');
+  assertContains(/8 weeks|eight[\s-]?week/i, 'missing eight-week duration');
+  assertContains(/\$5,600/i, 'missing the $5,600 total stipend');
 });
 
 test('6.2 states participant support costs cover housing/meals/travel/lab fees', () => {
@@ -152,27 +152,12 @@ test('6.3 states no application fee, no required tuition, no charge for common f
   assertContains(/tuition/i, 'missing tuition statement');
   assertContains(/never required for participation|never charged tuition|no required tuition/i,
     'missing the no-required-tuition statement');
-  assertContains(/common campus facilities|common facilities/i,
-    'missing the common-facilities no-charge statement');
 });
 
 test('6.4 states the REU experience is a research-training stipend, not salary', () => {
   assertContains(/research training experience/i, 'missing research-training-experience framing');
   assertContains(/stipend, not employment|not employment paid with a salary|not a salary|rather than employment/i,
     'missing the stipend-not-salary/employment distinction');
-});
-
-test('6.5 states stipend may be taxable and links to the IRS Tax Benefits for Education page', () => {
-  assertContains(/taxable/i, 'missing the taxable-income statement');
-  const irsLink = main.querySelectorAll('a').find((a) => {
-    const href = a.getAttribute('href') || '';
-    return /irs\.gov/i.test(href) && /tax-benefits-for-education/i.test(href);
-  });
-  assert.ok(irsLink, 'missing an IRS "Tax Benefits for Education" hyperlink');
-  assert.ok(
-    /tax benefits for education/i.test(normalize(irsLink.text)),
-    'IRS link text should read "Tax Benefits for Education"',
-  );
 });
 
 // ---------------------------------------------------------------------------

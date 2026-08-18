@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-label="Trustworthy immersive and visual-analytics AI: a VR headset with floating data panels and a 3D visualization cube.">
+  <defs>
+    <linearGradient id="p4bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4C1A27"/><stop offset=".55" stop-color="#6E2639"/><stop offset="1" stop-color="#98344F"/>
+    </linearGradient>
+    <radialGradient id="p4glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0" stop-color="#FFBF00" stop-opacity=".35"/><stop offset="1" stop-color="#FFBF00" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="p4dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="360" fill="url(#p4bg)"/>
+  <rect width="800" height="360" fill="url(#p4dots)"/>
+  <rect width="800" height="360" fill="url(#p4glow)"/>
+
+  <!-- VR headset -->
+  <g transform="translate(250 185)">
+    <rect x="-110" y="-58" width="220" height="116" rx="34" fill="#2A0F16" stroke="#FFBF00" stroke-width="3"/>
+    <rect x="-86" y="-38" width="76" height="76" rx="14" fill="#98344F" opacity=".85" stroke="#EED9DF" stroke-width="1.5"/>
+    <rect x="10" y="-38" width="76" height="76" rx="14" fill="#98344F" opacity=".85" stroke="#EED9DF" stroke-width="1.5"/>
+    <path d="M-110 -6 q-22 6 -26 34" fill="none" stroke="#FFBF00" stroke-width="3"/>
+    <path d="M110 -6 q22 6 26 34" fill="none" stroke="#FFBF00" stroke-width="3"/>
+  </g>
+
+  <!-- 3D data cube (CAVE) -->
+  <g transform="translate(590 150)" stroke="#EED9DF" stroke-width="2" fill="none" opacity=".95">
+    <path d="M-46 -30 L0 -54 L46 -30 L46 30 L0 54 L-46 30 Z"/>
+    <path d="M-46 -30 L0 -6 L46 -30"/><path d="M0 -6 L0 54"/>
+    <rect x="-18" y="-20" width="14" height="14" fill="#FFBF00" stroke="none" opacity=".9" transform="skewY(-27)"/>
+  </g>
+
+  <!-- floating analytics panels -->
+  <g>
+    <g transform="translate(560 265)"><rect x="-56" y="-30" width="112" height="60" rx="8" fill="#2A0F16" stroke="#EED9DF" stroke-width="1.5" opacity=".95"/>
+      <rect x="-44" y="10" width="14" height="8" fill="#FFBF00"/><rect x="-24" y="0" width="14" height="18" fill="#EED9DF"/><rect x="-4" y="-8" width="14" height="26" fill="#98344F"/><rect x="16" y="-2" width="14" height="20" fill="#EED9DF"/><rect x="36" y="6" width="14" height="12" fill="#FFBF00"/>
+    </g>
+    <g transform="translate(470 70)"><rect x="-48" y="-26" width="96" height="52" rx="8" fill="#2A0F16" stroke="#EED9DF" stroke-width="1.5" opacity=".95"/>
+      <polyline points="-38,10 -20,-4 -2,6 16,-12 36,-6" fill="none" stroke="#FFBF00" stroke-width="2.5"/>
+    </g>
+  </g>
+
+  <text x="40" y="336" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#EED9DF" opacity=".85">04 &#183; Trustworthy immersive &amp; visual analytics</text>
+</svg>

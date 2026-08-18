@@ -47,15 +47,14 @@ function assertAllPresent(phrases) {
 test('Req 2.1 - presents the set of research project areas, each with a description', () => {
   // The six project-area cards live in the activities section grid.
   const cards = main.querySelectorAll('#activities .grid .card');
-  assert.ok(cards.length >= 6, `expected at least 6 project-area cards, found ${cards.length}`);
+  assert.ok(cards.length >= 5, `expected at least 5 project-pathway cards, found ${cards.length}`);
 
   const areaHeadings = [
-    'Nanotechnology and advanced materials',
-    'Nanomedicine and bioengineering',
-    'Data science and analytics',
-    'Immersive visualization and extended reality',
-    'Cybersecurity and resilient computing',
-    'Applied mathematics and computational modeling',
+    'Communication-efficient federated adaptation at the edge',
+    'Efficient multimodal AI from local GPU to edge and optional FPGA',
+    'Data-quality-aware adaptive and explainable cyber defense',
+    'Trustworthy immersive, wearable, and visual-analytics AI',
+    'Robust learned space-optical communications with hardware-aware deployment',
   ];
   assertAllPresent(areaHeadings);
 
@@ -94,8 +93,8 @@ test('Req 2.3 - week-by-week outline covers orientation, mentored research, prof
 
 test('Req 2.4 - describes the research facilities and centers where students work', () => {
   assertAllPresent([
-    'Center for Integrative Nanotechnology Sciences',
     'Emerging Analytics Center',
+    'Arkansas Space Grant',
   ]);
   // A dedicated facilities block should be present.
   assert.ok(

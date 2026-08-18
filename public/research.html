@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Research | NSF REU Site at UA Little Rock</title>
-<meta name="description" content="Project areas, student activities, research facilities, and mentoring at the UA Little Rock NSF REU Site.">
+<meta name="description" content="The SURE-AI research plan: five undergraduate research pathways in efficient, secure, and trustworthy AI, the research environment, award-winning UA Little Rock faculty, student activities, competency badges, and the program's regional recruitment and workforce context.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles/theme.css">
-<link rel="stylesheet" href="/styles/site.css">
+<link rel="stylesheet" href="/styles/theme.css?v=3">
+<link rel="stylesheet" href="/styles/site.css?v=3">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -42,37 +42,79 @@
   </div>
 </header>
 <main id="main">
-<section id="activities" >
+<section id="activities">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Nature of student activities</span>
+      <span class="eyebrow">SURE-AI &middot; Nature of student activities</span>
       <h2>What you will actually do</h2>
-      <p>All six project areas share a common intellectual focus &mdash; data-driven discovery and emerging technologies, connecting nanoscale materials research with data science, visualization, and secure computing. That shared theme is what lets ten students from different projects learn from one another as a single cohort, in the weekly seminar and across the summer.</p>
-      <p>Each applicant ranks the project areas below; we match you with a mentor whose active work fits your interests.</p>
-      <p class="slot-note" data-content-slot="projects" data-src="/content/projects.json" data-placeholder="research-project-details">Detailed example projects for each area appear here once the cohort's mentor list is finalized. <span class="placeholder" data-placeholder="research-project-details" data-state="withheld-until-award">Published upon NSF award notification.</span></p>
+      <p>SURE-AI &mdash; the Summer Undergraduate Research Experience in AI &mdash; engages ten students in hypothesis-driven research on <strong>efficient, secure, and trustworthy artificial intelligence</strong>. The five pathways below share a <strong>common intellectual focus</strong>: how AI capability trades off against communication, computation, energy, security, privacy, robustness, data quality, and human control. That shared focus is what lets ten students in different projects learn from one another as a single cohort, in the weekly research exchange and across the summer.</p>
+      <p>Each applicant ranks the pathways below; we match you with a faculty mentor whose active work fits your interests. Every team follows one protocol: state a precise question, reproduce a working baseline, isolate a student-owned contribution, analyze uncertainty and failure, and produce an approved artifact documenting provenance, intended use, and limitations.</p>
     </div>
-    <div class="grid grid-3">
-      <div class="card"><h3 style="margin-top:0">Nanotechnology and advanced materials</h3><p>Synthesize and characterize nanoscale materials in the Center for Integrative Nanotechnology Sciences, using electron microscopy, scanning probe microscopy, X-ray diffraction, and optical spectroscopy. Projects address multifunctional materials with applications from energy to sensing.</p></div>
-      <div class="card"><h3 style="margin-top:0">Nanomedicine and bioengineering</h3><p>Work on biomedical applications of nanoscience, including bone and tissue regeneration materials, in collaboration with partners such as the University of Arkansas for Medical Sciences. Students learn how materials research translates toward clinical impact.</p></div>
-      <div class="card"><h3 style="margin-top:0">Data science and analytics</h3><p>Turn large, messy, real-world datasets from industry, government, and research partners into defensible conclusions. Projects cover statistical modeling, machine learning, and the honest evaluation of data-driven claims.</p></div>
-      <div class="card"><h3 style="margin-top:0">Immersive visualization and extended reality</h3><p>Build and study virtual, augmented, and mixed reality systems in the Emerging Analytics Center, home to a CAVE immersive environment. Projects apply interactive visualization to complex, big-data problems.</p></div>
-      <div class="card"><h3 style="margin-top:0">Cybersecurity and resilient computing</h3><p>Investigate how to secure networks, data, and mission-critical systems against evolving threats, one of the university's fastest growing research strengths. Projects range from applied security analysis to trustworthy machine learning.</p></div>
-      <div class="card"><h3 style="margin-top:0">Applied mathematics and computational modeling</h3><p>Develop the mathematical and computational models that underpin the other five areas, from simulations of physical systems to the statistics of experimental design. Ideal for students from mathematics and physics backgrounds.</p></div>
+    <div class="grid grid-2">
+      <div class="card">
+        <div class="project-media"><img src="/assets/projects/p1-federated-edge.svg" alt="Illustration of federated learning at the edge: edge devices sending compressed model updates to a central global model." loading="lazy"></div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:6px">Project 1 &middot; Leads: Dr. Elfikky; Dr. Talburt (data quality &amp; provenance)</p>
+        <h3 style="margin-top:0">Communication-efficient federated adaptation at the edge</h3>
+        <p>When do compressed low-rank updates preserve capability while reducing communication and edge-resource demand under variable bandwidth, participation, and client heterogeneity? Students reproduce a baseline with emulated clients, then compare update-skipping, quantization, compression, client-selection, or aggregation strategies against task quality, bytes transmitted, memory, calibration, and robustness.</p>
+      </div>
+      <div class="card">
+        <div class="project-media"><img src="/assets/projects/p2-multimodal-hardware.svg" alt="Illustration of efficient multimodal AI: a processor die running a neural network with a deployment pipeline from GPU to edge to FPGA." loading="lazy"></div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:6px">Project 2 &middot; Leads: Dr. Milanova (models); Dr. Zhang (deployment); Dr. Basu (visualization)</p>
+        <h3 style="margin-top:0">Efficient multimodal AI from local GPU to edge and optional FPGA</h3>
+        <p>Which combinations of compression, parameter-efficient adaptation, numerical precision, input resolution, and hardware mapping preserve vision or multimodal capability under latency, memory, and energy constraints? Measures include task quality, calibration, throughput, tail latency, peak memory, energy per inference, and cross-platform reproducibility, with a full CPU/simulation fallback.</p>
+      </div>
+      <div class="card">
+        <div class="project-media"><img src="/assets/projects/p3-cyber-defense.svg" alt="Illustration of adaptive, explainable cyber defense: a protective shield over a network telemetry stream with a flagged anomaly." loading="lazy"></div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:6px">Project 3 &middot; Leads: Dr. Elfikky (anomaly &amp; drift); Dr. Talburt; Drs. Spann &amp; Basu (analyst-facing evidence)</p>
+        <h3 style="margin-top:0">Data-quality-aware adaptive and explainable cyber defense</h3>
+        <p>How can anomaly detectors adapt to changing normal and malicious behavior without excessive false alarms, forgotten attacks, or opaque high-risk alerts? Using approved public, synthetic, sanitized, or emulated telemetry, teams compare adaptive thresholds, retraining schedules, continual learning, calibrated ranking, and auditable AI-assisted evidence summaries.</p>
+      </div>
+      <div class="card">
+        <div class="project-media"><img src="/assets/projects/p4-immersive-xr.svg" alt="Illustration of trustworthy immersive and visual-analytics AI: a VR headset with floating data panels and a 3D visualization cube." loading="lazy"></div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:6px">Project 4 &middot; Leads: Dr. Basu; Drs. Spann, Talburt &amp; Milanova advising</p>
+        <h3 style="margin-top:0">Trustworthy immersive, wearable, and visual-analytics AI</h3>
+        <p>How can uncertainty, failure, privacy risk, and multi-objective tradeoffs be made visible and actionable? Using approved non-human-subject materials, teams study uncertainty visualization, explanation stability, data minimization, and accessibility. EAC CAVE, VR/MR, and Project Aria resources are used only when they materially enable the question; desktop visualization is a complete fallback.</p>
+      </div>
+      <div class="card">
+        <div class="project-media"><img src="/assets/projects/p5-space-optical.svg" alt="Illustration of robust learned space-optical communications: a satellite beaming an optical signal through atmospheric turbulence to a ground station, with a received signal constellation." loading="lazy"></div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:6px">Project 5 &middot; Leads: Dr. Elfikky (communications models); Dr. Zhang (hardware-aware deployment)</p>
+        <h3 style="margin-top:0">Robust learned space-optical communications with hardware-aware deployment</h3>
+        <p>When do neural channel-estimation, symbol-detection, or autoencoder methods remain calibrated and reliable under turbulence, Poisson noise, and channel shift? Arkansas Space Grant models and code provide nonproprietary baselines; students run a bounded ablation, calibration study, or hardware-aware experiment, with simulation and institutional computing as a complete baseline pathway.</p>
+      </div>
+      <div class="card" style="background:var(--accent-subtle);border-color:transparent">
+        <h3 style="margin-top:0">Cross-project synthesis</h3>
+        <p>The five pathways share questions about resource limits, distribution shift, attack exposure, data quality, uncertainty, and appropriate human reliance. Weekly exchanges compare how similar design decisions play out across the projects. Each student owns a defined intellectual component and explains how it changes the team's conclusion &mdash; originality through focused intervention, not an unrealistically large system build.</p>
+      </div>
     </div>
-    <div class="grid grid-2" style="margin-top:40px">
+
+    <figure class="figure" style="margin-top:28px" aria-labelledby="fig2-cap">
+      <div class="figure-media">
+        <picture>
+          <source srcset="/assets/figure2-regional-research-workforce.svg" type="image/svg+xml">
+          <img src="/assets/figure2-regional-research-workforce.png" width="1618" height="1080"
+               alt="Diagram mapping SURE-AI's five research pathways to representative regional application and workforce contexts across Arkansas and the Mid-South.">
+        </picture>
+      </div>
+      <figcaption id="fig2-cap">
+        <span class="figlabel">Figure &middot; Regional research &amp; workforce context</span>
+        This diagram connects the five research pathways to representative regional application and workforce contexts. These contexts motivate research questions, external critique, and graduate or career conversations.
+        <span class="disclaimer">Clusters are illustrative, not commitments or placements. They do not constitute confirmed employers, subawards, research sites, commercial-facility access, or required participant placements.</span>
+      </figcaption>
+    </figure>
+
+    <div class="grid grid-2" style="margin-top:28px">
       <div>
         <h3 style="font-size:19px;margin-bottom:12px">Week by week</h3>
         <ul class="checks">
-          <li><strong>Week 1.</strong> Orientation covering program expectations and the code of conduct, training in the responsible and ethical conduct of research, and a skills bootcamp so every student starts from a common baseline.</li>
-          <li><strong>Weeks 2 to 8.</strong> Full time research with your mentor and group; weekly cohort seminar; professional development workshops on graduate school, careers, and scientific communication.</li>
-          <li><strong>Week 9.</strong> Writing workshop, poster and talk preparation, practice presentations with feedback.</li>
-          <li><strong>Week 10.</strong> Final research symposium where every student presents, followed by planning for continued collaboration through the academic year.</li>
+          <li><strong>Weeks 1&ndash;2.</strong> Orientation covering program expectations and the code of conduct, training in the responsible and ethical conduct of research, and a skills bootcamp (Linux, version control, reproducibility, data stewardship), plus literature analysis, question refinement, and baseline replication, so every student starts from a common baseline.</li>
+          <li><strong>Weeks 3&ndash;6.</strong> Sustained research with your mentor and team, taking increasing ownership of a bounded intervention, ablation, robustness study, deployment comparison, or failure analysis; a weekly cohort research exchange; and professional development workshops on graduate school, research careers, scientific communication, and responsible AI.</li>
+          <li><strong>Weeks 7&ndash;8.</strong> Final validation, limitations, documentation, and scientific writing; poster and oral communication; the final research symposium where every student presents; and continuation planning that connects the work to your academic year.</li>
         </ul>
       </div>
       <div>
         <h3 style="font-size:19px;margin-bottom:12px">After the summer</h3>
         <ul class="checks">
-          <li>Mentors continue interacting with students during the academic year, to the extent practicable, to connect the research experience to your overall course of study, as the solicitation directs.</li>
+          <li>Mentors continue interacting with students during the academic year, to the extent practicable, to connect the research experience to your overall course of study, as NSF directs.</li>
           <li>Conference travel support to present your results at a regional or national venue.</li>
           <li>Recommendation letters and graduate school application guidance from your mentor.</li>
           <li>Support toward publication when summer results warrant it.</li>
@@ -80,40 +122,217 @@
       </div>
     </div>
   </div>
-</section><section id="environment" class="alt">
+</section>
+<section id="environment" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">The research environment</span>
       <h2>Where the work happens</h2>
-      <p>UA Little Rock is a metropolitan public research university classified as an R2 doctoral university with high research activity. Research takes place across the Donaghey College of Science, Technology, Engineering, and Mathematics and the university's more than twenty research centers, including two purpose-built facilities students in this program use directly.</p>
+      <p>UA Little Rock is a metropolitan public research university that combines doctoral computing programs with specialized research facilities and an access-oriented public mission. SURE-AI uses existing university and independently supported resources; no major equipment is requested from NSF. Before any project is advertised, a Project Readiness Record is approved and environments are tested four to six weeks before students arrive.</p>
     </div>
     <div class="grid grid-2">
       <div>
         <ul class="checks">
-          <li><strong>Faculty mentors.</strong> Mentors are drawn from faculty across the Donaghey College of Science, Technology, Engineering, and Mathematics and the university's research centers, selected for expertise and a documented history of involving undergraduates in research, including publishing with undergraduate coauthors.</li>
-          <li><strong>Mentor training.</strong> All mentors complete structured training before the summer, covering research supervision and professional conduct, as the solicitation requires.</li>
-          <li><strong>Sustained mentoring.</strong> Mentoring relationships continue after students leave the Site, through academic year check-ins, publication support, and recommendation letters.</li>
+          <li><strong>Faculty mentors.</strong> Mentors are drawn from the Department of Computer Science, the Department of Electrical &amp; Computer Engineering, and the university's research centers, <strong>selected for expertise</strong> and a <strong>documented history of involving undergraduates in research</strong>, including publishing with undergraduate coauthors.</li>
+          <li><strong>Mentor training.</strong> All mentors complete <strong>structured training before the summer</strong>, covering inclusive research supervision, feedback, authorship, accessibility, and professional conduct, as NSF requires.</li>
+          <li><strong>Monitoring.</strong> Mentoring quality is supervised through <strong>program-level check-ins</strong> during the summer, so it is monitored, not assumed.</li>
+          <li><strong>Sustained mentoring.</strong> Mentoring relationships continue after students leave the Site, through academic-year check-ins, publication support, and recommendation letters.</li>
         </ul>
-        <div class="slot-note" data-content-slot="mentors" data-src="/content/mentors.json" data-placeholder="named-mentor-profiles" style="margin-top:16px">
-          <p style="font-size:14.5px;color:var(--fg-muted)">Named mentor profiles, with research descriptions and undergraduate mentoring records, appear here once the award is finalized, so applicants can see exactly who they would work with. <span class="placeholder" data-placeholder="named-mentor-profiles" data-state="withheld-until-award">Published upon NSF award notification.</span></p>
-        </div>
       </div>
       <div class="card">
-        <h3 style="margin-top:0">Facilities students work in</h3>
+        <h3 style="margin-top:0">Facilities and centers students work in</h3>
         <div class="rows" style="border:none">
-          <div class="row" style="padding:10px 0"><div class="k">Center for Integrative Nanotechnology Sciences<small>Electron microscopy, scanning probe microscopy, X-ray diffraction, and optical spectroscopy in a LEED Gold research building; collaborations with UAMS and the FDA's National Center for Toxicological Research</small></div></div>
-          <div class="row" style="padding:10px 0"><div class="k">George W. Donaghey Emerging Analytics Center<small>Immersive visualization and extended reality lab, including a CAVE environment, applying interactive analytics to industry and government data problems</small></div></div>
-          <div class="row" style="padding:10px 0;border-bottom:none"><div class="k">Donaghey College of STEM laboratories<small>Departmental research labs in biology, chemistry, physics and astronomy, earth sciences, mathematics and statistics, and computer science</small></div></div>
+          <div class="row" style="padding:10px 0"><div class="k">Institutional GPU/HPC and edge hardware<small>Institutional GPU/HPC, secure storage, containers, and Jupyter environments, plus local RTX-class systems and two Jetson AGX Orin kits for optimized inference and latency/energy measurement</small></div></div>
+          <div class="row" style="padding:10px 0"><div class="k">George W. Donaghey Emerging Analytics Center (EAC)<small>Immersive visualization and extended reality lab with a CAVE environment, VR/MR headsets, and Meta Project Aria research glasses</small></div></div>
+          <div class="row" style="padding:10px 0"><div class="k">CORE Center and ERIQ<small>Cybersecurity, digital forensics, and cyber simulation (CORE), and entity-resolution, information-quality, provenance, and governance methods (the Center for Advanced Research in Entity Resolution &amp; Information Quality)</small></div></div>
+          <div class="row" style="padding:10px 0;border-bottom:none"><div class="k">Arkansas Space Grant<small>Channel models, simulation code, and learning-based baselines for space-optical communications, without proprietary data or field hardware</small></div></div>
         </div>
       </div>
     </div>
   </div>
-</section><section id="conduct">
+</section>
+
+<section id="mentors">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Mentor pool &amp; qualifications</span>
+      <h2>Learn from award-winning UA Little Rock faculty</h2>
+      <p>SURE-AI is led by a distinguished team of UA Little Rock researchers &mdash; IEEE Senior Members, a Fulbright Scholar, an NVIDIA Deep Learning Institute Ambassador, an endowed chair, and internationally recognized leaders in AI, data quality, immersive analytics, and edge hardware. Every advertised team has a primary faculty lead present in Little Rock for the full eight-week program, meeting weekly, with a documented record of mentoring undergraduates toward real research products.</p>
+    </div>
+    <div class="grid grid-2">
+
+      <div class="card mentor">
+        <span class="mentor-role">PI &amp; Site Director</span>
+        <h3 style="margin:8px 0 2px">Dr. Abdelrahman Elfikky</h3>
+        <p class="mentor-title">Tenure-Track Assistant Professor, Department of Computer Science &middot; Donaghey College of STEM, UA Little Rock</p>
+        <p class="mentor-honors">Researcher in AI for communications; published on NOMA, neural channel estimation and detection, and non-differentiable Poisson channels for space-optical links.</p>
+        <p><strong>Expertise.</strong> Wireless and space-optical communications, federated and edge AI, cyber-defense learning, neural channel estimation, and trustworthy machine learning.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Leads scientific integration, project and mentor readiness, recruitment and matching, and the federated, cyber-defense, and communications-AI pathways; oversees evaluation, authorship expectations, and continuation.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Co-PI &amp; Site Co-Director</span>
+        <h3 style="margin:8px 0 2px">Dr. Aryabrata Basu</h3>
+        <p class="mentor-title">Assistant Professor, Department of Computer Science &middot; Faculty Fellow and Director of Immersive Interactive Technology Research, George W. Donaghey Emerging Analytics Center (EAC)</p>
+        <p class="mentor-honors">IEEE Senior Member &middot; IEEE VR 2025 Best Paper Award (Honorable Mention). Ph.D. in Computer Science, University of Georgia; formerly staff research scientist at Emory University's Center for Digital Scholarship.</p>
+        <p><strong>Expertise.</strong> Virtual, augmented, and mixed reality; human&ndash;computer interaction; human spatial decision-making in immersive environments; usability analytics; assistive AI.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Co-directs operations and mentor preparation; leads EAC CAVE, VR/MR, and Project Aria activities, accessibility, uncertainty visualization, research communication, and symposium quality.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Faculty Research Mentor</span>
+        <h3 style="margin:8px 0 2px">Dr. Mariofanna Milanova</h3>
+        <p class="mentor-title">Professor, Department of Computer Science, UA Little Rock (faculty since 2001)</p>
+        <p class="mentor-honors">IEEE Senior Member &middot; Fulbright U.S. Scholar &middot; NVIDIA Deep Learning Institute University Ambassador &middot; 2020 Faculty Excellence in Research award. 120+ publications, 50+ journal papers, 35 book chapters, and two patents; funded by NSF, NIH, DARPA, DoD, DHS, NATO, and Nokia Bell Labs.</p>
+        <p><strong>Expertise.</strong> Artificial intelligence and machine learning; signal, speech, and image/video processing; brain-like computing and neuroinformatics; computer graphics.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Leads efficient multimodal AI &mdash; model and data selection, adaptation, compression, calibration, and robustness &mdash; with technical instruction and artifact review.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Senior Personnel</span>
+        <h3 style="margin:8px 0 2px">Dr. John R. Talburt</h3>
+        <p class="mentor-title">Professor of Information Science &middot; Acxiom Chair of Information Quality &middot; Director, Information Quality Graduate Program &middot; Lead, Center for Advanced Research in Entity Resolution &amp; Information Quality (ERIQ)</p>
+        <p class="mentor-honors">Internationally recognized scholar in information quality and entity resolution; named to CDO Magazine's Leading Academic Data Leaders List. Author of four books on information quality and entity resolution and inventor on data-integration patents; formerly led Data Research &amp; Development at Acxiom.</p>
+        <p><strong>Expertise.</strong> Entity resolution, data quality management, data governance, data integration, provenance, and metadata.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Leads the Data Readiness and Provenance Checklist and the Week&nbsp;2 data review; co-mentors the cyber-defense project; analyzes missingness, duplication, schema and label quality, identity ambiguity, and lineage.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Senior Personnel</span>
+        <h3 style="margin:8px 0 2px">Dr. Billy Spann</h3>
+        <p class="mentor-title">Assistant Professor, Department of Computer Science, UA Little Rock</p>
+        <p class="mentor-honors">Ph.D. in Computer and Information Sciences; researcher with the Collaboratorium for Social Media and Online Behavioral Studies (COSMOS). Two decades of wireless telecom engineering experience; contributor to a $750K state cybersecurity training initiative and the university's Applied AI certificate.</p>
+        <p><strong>Expertise.</strong> Socio-computational science, social computing, behavioral modeling in online networks, social-cyber forensics, and information integrity.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Leads cross-project trustworthy-AI review, stakeholder and risk analysis, appropriate human reliance, communication of uncertainty and limitations, and public-claim review.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Senior Personnel</span>
+        <h3 style="margin:8px 0 2px">Dr. Yunxiang Zhang</h3>
+        <p class="mentor-title">Assistant Professor of Electrical &amp; Computer Engineering &middot; Founder and Lead, AI4EDGE Lab, UA Little Rock</p>
+        <p class="mentor-honors">Research published in top hardware venues including DAC, ICCAD, and ISCAS, and in IEEE TCAD and IEEE T-VLSI. Prior research experience at Intel Graphics Research and the Vector Institute.</p>
+        <p><strong>Expertise.</strong> Low-power and energy-efficient AI systems, edge AI and TinyML, FPGA/ASIC design and hardware acceleration, and AI&ndash;hardware co-design.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Leads hardware-aware deployment, low-precision and embedded baselines, platform/toolchain/measurement/safety readiness, and analysis of latency, throughput, memory, energy, and cross-platform reproducibility.</p>
+      </div>
+
+      <div class="card mentor">
+        <span class="mentor-role">Undergraduate Research &amp; Mentoring</span>
+        <h3 style="margin:8px 0 2px">Dr. Michael E. Moore</h3>
+        <p class="mentor-title">Director of Undergraduate Research and Mentoring &middot; Learning Assistant Program, LSAMP, and Undergraduate Research, UA Little Rock</p>
+        <p class="mentor-honors">Ph.D. in integrative biology, Oklahoma State University (2017). Directs UA Little Rock's Louis Stokes Alliance for Minority Participation (LSAMP), the Learning Assistant Program, and Undergraduate Research; author of articles and federal grants on inclusion and diversity in STEM education.</p>
+        <p><strong>Expertise.</strong> Undergraduate research mentoring, inclusive STEM education, learning-assistant pedagogy, and broadening participation for students from limited-opportunity backgrounds.</p>
+        <p class="mentor-reu"><strong>In SURE-AI.</strong> Supports undergraduate-research mentoring and professional development, and connects the Site's broadening-participation outreach to UA Little Rock's LSAMP and Learning Assistant networks so students from limited-opportunity institutions can find and prepare for the cohort.</p>
+      </div>
+
+    </div>
+    <div class="callout" style="max-width:900px">
+      <strong>Layered support.</strong> Five graduate near-peer mentors (one per team) are filled before matching, with a pre-approved alternate for any withdrawal. Two Undergraduate Campus Coordinators support the full cohort's arrival, scheduling, workshops, and symposium logistics &mdash; they are program-support personnel, not research mentors, reviewers, or badge certifiers. A Technical Infrastructure and Systems Lead handles computing access, environments, and recovery, but does not approve research scope, authorship, or badge attainment.
+    </div>
+  </div>
+</section>
+<section id="recruitment" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Recruitment, selection &amp; matching</span>
+      <h2>A national pool, with relationship-based outreach</h2>
+      <p>SURE-AI uses NSF ETAP to maintain one national applicant pool. The primary applicant population is students in associate- or baccalaureate-degree programs in computer science, information science, computer engineering, cybersecurity, data science, or closely related CISE fields. Eligibility review is separated from merit review, and each eligible application receives at least two conflict-screened reviews using a calibrated rubric. Publications and advanced equipment access are not prerequisites.</p>
+    </div>
+    <figure class="figure" aria-labelledby="fig1-cap">
+      <div class="figure-media">
+        <picture>
+          <source srcset="/assets/figure1-recruitment-access-network.svg" type="image/svg+xml">
+          <img src="/assets/figure1-recruitment-access-network.png" width="1664" height="1138"
+               alt="Map of SURE-AI's regional recruitment and access network across Arkansas and the Mid-South, showing outreach anchor locations that connect community colleges, regional-serving institutions, and EPSCoR partners to UA Little Rock.">
+        </picture>
+      </div>
+      <figcaption id="fig1-cap">
+        <span class="figlabel">Figure &middot; Regional recruitment &amp; access network</span>
+        Targeted, relationship-based outreach across Arkansas and the Mid-South reaches community colleges, rural- and regional-serving institutions, EPSCoR jurisdictions, and institutions with limited research infrastructure, through the STEM Education Center, instructors, advisors, and transfer coordinators.
+        <span class="disclaimer">Named locations are outreach anchors, not geographic eligibility rules, state quotas, applicant-scoring preferences, subawards, or unconfirmed operating partnerships.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="badges">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Professional development &amp; badges</span>
+      <h2>Competency badges that recognize evidence, not attendance</h2>
+      <p>After the Weeks 1&ndash;2 bootcamp establishes a common baseline, three UA Little Rock competency-based badges recognize evidence &mdash; not attendance &mdash; at Weeks 2, 5, and 8, complementing the required scholarly products.</p>
+    </div>
+    <div style="overflow-x:auto">
+    <table>
+      <caption class="sr-only">SURE-AI competency-based badge pathway</caption>
+      <thead>
+        <tr><th scope="col">Badge</th><th scope="col">Decision</th><th scope="col">Required evidence</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Research Foundations</strong></td><td>Week 2</td><td>Responsible-research, conduct, security, and data-stewardship completion; literature synthesis; initialized repository and data manifest; data-quality/provenance and resource plan; reproduced baseline; faculty-approved question.</td></tr>
+        <tr><td><strong>Technical Proficiency</strong></td><td>Week 5</td><td>Functioning pipeline; documented environment; complete experiment or analysis cycle; code/data review; preliminary results; project-relevant trustworthiness measures; reproducibility, data-quality, or deployment check; technical briefing.</td></tr>
+        <tr><td><strong>Research Achievement</strong></td><td>Week 8</td><td>Student-owned contribution; rigorous evaluation of uncertainty, failure, and limitations; approved artifact; completed trustworthiness scorecard; report; poster; oral presentation; continuation decision.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="callout info" style="max-width:900px">A rigorous negative result, reproducibility finding, or well-supported boundary condition can satisfy the Research Achievement standard. Graduate mentors give formative review, but the primary faculty lead certifies attainment and the PI and Co-PI calibrate decisions across projects.</div>
+  </div>
+</section>
+
+<section id="teams" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Project management</span>
+      <h2>Team leadership and complete fallback pathways</h2>
+      <p>SURE-AI operates as one coordinated Site of ten participants in five two-student teams, each with a primary faculty lead and a graduate near-peer mentor. The eight-week program runs with weekly leadership meetings and formal scope gates at Weeks 2, 5, and 7. Every project has a confirmed baseline and a complete fallback, so no team depends on specialized hardware, commercial-facility access, or an unconfirmed external role.</p>
+    </div>
+    <div style="overflow-x:auto">
+    <table>
+      <caption class="sr-only">Planned team leadership, support, and complete fallback pathways</caption>
+      <thead>
+        <tr><th scope="col">Team</th><th scope="col">Research pathway</th><th scope="col">Faculty leadership</th><th scope="col">Confirmed baseline &amp; fallback</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Communication-efficient federated adaptation</td><td>Elfikky; Talburt reviews data quality and provenance</td><td>Institutional computing, emulated clients and links, Jetson where available; scaled simulation fallback.</td></tr>
+        <tr><td>2</td><td>Efficient multimodal local-GPU-to-edge / optional FPGA AI</td><td>Milanova; Zhang leads deployment; Basu advises visualization</td><td>Local/institutional GPU, approved data, compression and profiling, Jetson or workstation; CPU/simulation fallback.</td></tr>
+        <tr><td>3</td><td>Data-quality-aware adaptive and explainable cyber defense</td><td>Elfikky; Talburt, Spann, and Basu support linkage, evidence, and visualization</td><td>CORE-approved public, synthetic, sanitized, or emulated telemetry; reproducible benchmark fallback.</td></tr>
+        <tr><td>4</td><td>Trustworthy immersive and visual-analytics AI</td><td>Basu; Spann, Talburt, and Milanova advise trustworthiness, governance, and models</td><td>EAC CAVE, VR/MR, public Project Aria tools and approved materials; desktop/simulation fallback.</td></tr>
+        <tr><td>5</td><td>Robust learned space-optical communications with hardware-aware deployment</td><td>Zhang leads deployment; Elfikky leads communications models</td><td>Arkansas Space Grant models, institutional computing, Jetson where useful; simulation is the complete fallback.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="evaluation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Evaluation &amp; reporting</span>
+      <h2>How the program measures success</h2>
+      <p>SURE-AI uses one internally administered evaluation and continuous-improvement framework coordinated by the PI and Co-PI, combining formative evidence for the current cohort with summative and longitudinal evidence on research development, access, mentoring, climate, products, and career pathways.</p>
+    </div>
+    <div style="overflow-x:auto">
+    <table>
+      <caption class="sr-only">Evaluation questions, evidence, and decision use</caption>
+      <thead>
+        <tr><th scope="col">Question</th><th scope="col">Evidence</th><th scope="col">Use</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Does recruitment broaden access?</td><td>ETAP source, eligibility, completion, home institution, prior-opportunity context, offer acceptance, and limited-opportunity representation.</td><td>Refine outreach, application guidance, selection calibration, and support planning.</td></tr>
+        <tr><td>Do students develop as researchers?</td><td>Pre/post learning and self-efficacy measures; project-plan, badge, artifact, poster, and oral rubrics; mentor ratings; scorecards; reproducibility audits.</td><td>Adjust bootcamp, scope, clinics, mentoring intensity, and project design.</td></tr>
+        <tr><td>Is mentoring effective and climate safe?</td><td>Mentor agreements and meetings; pulse surveys; mentoring, belonging, accessibility, workload, and climate items; issue-resolution records; exit interviews.</td><td>Improve preparation, role clarity, reporting, workload, accommodations, and escalation.</td></tr>
+        <tr><td>Do outcomes continue?</td><td>Continuation plans and follow-up at ~6, 12, 24, and 36 months on degree progress, transfer, continued research, products, graduate study, and technical employment.</td><td>Strengthen continuation, alumni engagement, dissemination, and graduate pathways.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="conduct" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Professional development and conduct</span>
       <h2>Development, and a safe, respectful, inclusive environment</h2>
-      <p>The solicitation requires every REU Site to plan for four things in this area. Here is how this Site meets each one.</p>
+      <p>NSF requires every REU Site to plan for four things in this area. Here is how this Site meets each one.</p>
     </div>
     <div class="grid grid-2">
       <div>
@@ -137,19 +356,36 @@
     </div>
   </div>
 </section>
+
+<section id="prior">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Results from prior NSF support</span>
+      <h2>Building on Arkansas DART</h2>
+    </div>
+    <div class="callout" style="max-width:900px">
+      <p><strong>NSF OIA-1946391, RII Track-1: DART &mdash; Data Analytics that are Robust and Trusted.</strong> The statewide $24&nbsp;million award ran July 1, 2020&ndash;June 30, 2025, with Drs. John R. Talburt and Mariofanna Milanova as PIs. Co-PI Aryabrata Basu received DART seed funding for robust 2D-to-3D cardiac arterial mapping and visualization for surgical pre-planning. It supported student thesis research, immersive scientific communication, and a user-facing visualization platform.</p>
+      <p style="margin-top:10px">SURE-AI carries forward three lessons: begin with a working pipeline, pair visualization with uncertainty and limitations, and require both specialized and desktop-compatible artifacts.</p>
+    </div>
+    <div class="hero-ctas" style="margin-top:26px">
+      <a class="btn btn-primary" href="/apply.html">Start your application</a>
+      <a class="btn btn-secondary" href="/eligibility.html">Eligibility &amp; funding</a>
+    </div>
+  </div>
+</section>
 </main>
 <footer>
   <div class="wrap">
     <div class="cols">
       <div style="display:flex;gap:16px;align-items:flex-start">
         <div class="badge-nsf">NSF</div>
-        <p>This program is proposed as a Research Experiences for Undergraduates (REU) Site under NSF solicitation 23-601. Upon award, this material will be based upon work supported by the National Science Foundation. Any opinions, findings, and conclusions or recommendations expressed on this site are those of the program team and do not necessarily reflect the views of the National Science Foundation.</p>
+        <p>This program is proposed as a Research Experiences for Undergraduates (REU) Site under the NSF REU program (NSF 23-601). Upon award, this material will be based upon work supported by the National Science Foundation. Any opinions, findings, and conclusions or recommendations expressed on this site are those of the program team and do not necessarily reflect the views of the National Science Foundation.</p>
       </div>
       <div>
         <h3>Program</h3>
         <ul>
-          <li><a href="#eligibility">Eligibility</a></li>
-          <li><a href="#support">Funding</a></li>
+          <li><a href="/eligibility.html#eligibility">Eligibility</a></li>
+          <li><a href="/eligibility.html#support">Funding</a></li>
           <li><a href="/apply.html">Apply</a></li>
           <li><a href="/account.html">Account</a></li>
         </ul>
@@ -164,7 +400,7 @@
         </ul>
       </div>
     </div>
-    <div class="fine">University of Arkansas at Little Rock &middot; Named mentor profiles and the PI contact: <span class="placeholder" data-placeholder="named-mentor-profiles" data-state="withheld-until-award">Published upon NSF award notification.</span> The URL of this site is furnished to the cognizant NSF program officer within 90 days of award notification, as the solicitation requires.</div>
+    <div class="fine">University of Arkansas at Little Rock &middot; The mentor roster reflects the proposed Senior/Key Personnel in the project description; the final roster is confirmed upon NSF award notification. The URL of this site is furnished to the cognizant NSF program officer within 90 days of award notification, as NSF requires.</div>
   </div>
 </footer>
 

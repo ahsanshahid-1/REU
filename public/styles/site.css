@@ -75,8 +75,11 @@ header.site{position:sticky;top:0;z-index:50;background:var(--bg-surface);border
   mask:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg>') center/contain no-repeat}
 
 /* ---------- hero ---------- */
-.hero{background:var(--bg-inverse);color:var(--fg-inverse);position:relative}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;padding-top:72px;padding-bottom:64px;align-items:center}
+.hero{background:radial-gradient(70% 90% at 82% 12%, rgba(255,191,0,.13), transparent 58%), var(--bg-inverse);color:var(--fg-inverse);position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;padding-top:56px;padding-bottom:52px;align-items:center}
+.hero-chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px;padding:0}
+.hero-chips li{font-size:13.5px;font-weight:600;color:var(--fg-inverse);background:rgba(255,255,255,.09);border:1px solid var(--fg-inverse-muted);border-radius:999px;padding:7px 14px;display:inline-flex;align-items:center;gap:8px}
+.hero-chips li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-gold);flex:none}
 .kicker{font-family:'IBM Plex Mono';font-size:12.5px;letter-spacing:.05em;color:var(--accent-gold);text-transform:uppercase;display:inline-flex;gap:8px;align-items:center;margin-bottom:18px}
 .hero h1{font-weight:700;font-size:clamp(32px,4.4vw,52px);line-height:1.08;letter-spacing:-.015em;margin-bottom:20px}
 .hero h1 .hl{color:var(--accent-gold)}
@@ -88,15 +91,22 @@ header.site{position:sticky;top:0;z-index:50;background:var(--bg-surface);border
 @media(max-width:880px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:400px;order:-1}}
 
 /* ---------- sections ---------- */
-main section{padding:72px 0}
-.sec-head{max-width:700px;margin-bottom:40px}
+main section{padding:38px 0}
+.sec-head{max-width:none;margin-bottom:22px}
+/* Keep intro paragraphs at a readable measure, but let them span most of the
+   content column so the section header aligns with the full-width grids below
+   instead of leaving a large blank strip on the right. */
+.sec-head p{margin-top:6px;max-width:1000px}
 .eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-subtle);display:inline-block;padding:4px 10px;border-radius:4px;margin-bottom:14px}
 h2{font-weight:700;font-size:clamp(25px,3vw,36px);line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
 .sec-head p{color:var(--fg-secondary);font-size:16.5px}
 .alt{background:var(--bg-surface);border-top:1px solid var(--border-default);border-bottom:1px solid var(--border-default)}
 
 /* cards */
-.grid{display:grid;gap:20px}
+/* align-items:start so each card sizes to its own content instead of
+   stretching to the tallest card in the row (which left blank space at the
+   bottom of shorter cards). */
+.grid{display:grid;gap:20px;align-items:start}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .grid-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 .card{background:var(--bg-surface);color:var(--fg-primary);border:1px solid var(--border-default);border-radius:12px;padding:26px 24px;transition:border-color .15s,box-shadow .15s}
@@ -204,3 +214,31 @@ a.card:hover{color:var(--fg-primary)}
    statement reads as a note, not a broken placeholder. */
 .placeholder[data-state="withheld-until-award"]{font-style:italic}
 .slot-note[data-state="finalized"]{font-style:normal}
+
+/* ---------- figures (embedded proposal maps/diagrams) ---------- */
+figure.figure{margin:0;border:1px solid var(--border-default);border-radius:12px;overflow:hidden;background:var(--bg-surface)}
+figure.figure .figure-media{margin:0;padding:22px;background:var(--bg-inset);text-align:center}
+figure.figure .figure-media img{max-width:100%;height:auto;display:block;margin:0 auto;
+  /* the maps are dark ink on transparent/white; keep them readable in dark mode */
+  background:#fff;border-radius:8px;box-shadow:var(--shadow-1)}
+figure.figure figcaption{padding:16px 20px;font-size:14px;color:var(--fg-secondary);border-top:1px solid var(--border-default)}
+figure.figure figcaption .figlabel{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-strong);display:block;margin-bottom:6px}
+figure.figure figcaption .disclaimer{display:block;margin-top:8px;font-size:12.5px;color:var(--fg-muted);font-style:italic}
+
+/* visually-hidden (screen-reader only) utility — used for table captions
+   where a visible <h2> already names the section. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---------- prestigious mentor profile cards (program.html) ---------- */
+.card.mentor{display:flex;flex-direction:column}
+.card.mentor .mentor-role{align-self:flex-start;font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-strong);background:var(--accent-subtle);padding:4px 9px;border-radius:999px;font-weight:500}
+.card.mentor h3{font-size:19px;font-weight:700;color:var(--fg-primary)}
+.card.mentor .mentor-title{font-size:13.5px;font-weight:600;color:var(--fg-secondary);margin:0 0 10px}
+.card.mentor .mentor-honors{font-size:13px;color:var(--fg-muted);font-style:italic;margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid var(--border-default)}
+.card.mentor p{font-size:14px;color:var(--fg-secondary);margin-bottom:8px}
+.card.mentor .mentor-reu{margin-top:auto;padding-top:8px}
+.card.mentor strong{color:var(--fg-primary);font-weight:600}
+
+/* ---------- project artwork banners (program.html) ---------- */
+.project-media{margin:-26px -24px 16px;overflow:hidden;border-radius:12px 12px 0 0;border-bottom:1px solid var(--border-default);background:#2A0F16;aspect-ratio:800/360}
+.project-media img{display:block;width:100%;height:100%;object-fit:cover}

@@ -38,9 +38,9 @@ function normalize(text) {
 
 const pageText = normalize(root.text);
 
-test('Req 1.1: states fully funded, ten-week, in-residence framing with a cohort of 10', () => {
+test('Req 1.1: states fully funded, eight-week, in-residence framing with a cohort of 10', () => {
   assert.match(pageText, /fully funded/, 'expected "fully funded" framing');
-  assert.match(pageText, /ten-week|10[- ]week/, 'expected a ten-week duration statement');
+  assert.match(pageText, /eight-week|8[- ]week/, 'expected an eight-week duration statement');
   assert.match(pageText, /in[- ]residence/, 'expected "in-residence" framing');
   assert.match(
     pageText,

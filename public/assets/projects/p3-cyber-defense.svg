@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" role="img" aria-label="Adaptive, explainable cyber defense: a protective shield over a network telemetry stream with a flagged anomaly.">
+  <defs>
+    <linearGradient id="p3bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4C1A27"/><stop offset=".55" stop-color="#6E2639"/><stop offset="1" stop-color="#98344F"/>
+    </linearGradient>
+    <linearGradient id="p3shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#98344F"/><stop offset="1" stop-color="#2A0F16"/>
+    </linearGradient>
+    <pattern id="p3dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" opacity=".07"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="360" fill="url(#p3bg)"/>
+  <rect width="800" height="360" fill="url(#p3dots)"/>
+
+  <!-- telemetry waveform with flagged anomaly spike -->
+  <g transform="translate(0 190)">
+    <polyline fill="none" stroke="#EED9DF" stroke-width="2.5" opacity=".8"
+      points="60,0 110,-14 150,10 195,-8 240,6 285,-12 330,8 372,-6 405,0 430,-70 452,64 476,-8 520,8 565,-10 610,6 655,-12 700,8 745,-6"/>
+    <!-- anomaly marker -->
+    <circle cx="441" cy="-4" r="26" fill="none" stroke="#FFBF00" stroke-width="3"/>
+    <circle cx="441" cy="-4" r="26" fill="#FFBF00" opacity=".12"/>
+    <line x1="441" y1="-34" x2="441" y2="-92" stroke="#FFBF00" stroke-width="2" stroke-dasharray="4 4"/>
+    <g transform="translate(441 -108)"><path d="M0 -14 L13 9 L-13 9 Z" fill="#FFBF00"/><rect x="-2" y="-4" width="4" height="8" fill="#2A0F16"/><rect x="-2" y="6" width="4" height="4" fill="#2A0F16"/></g>
+  </g>
+
+  <!-- shield -->
+  <g transform="translate(400 150)">
+    <path d="M0 -96 C 34 -74 70 -66 88 -64 C 88 4 60 66 0 100 C -60 66 -88 4 -88 -64 C -70 -66 -34 -74 0 -96 Z"
+      fill="url(#p3shield)" stroke="#FFBF00" stroke-width="3"/>
+    <path d="M0 -96 C 34 -74 70 -66 88 -64 C 88 4 60 66 0 100 C -60 66 -88 4 -88 -64 C -70 -66 -34 -74 0 -96 Z"
+      fill="none" stroke="#ffffff" stroke-width="1" opacity=".2"/>
+    <!-- checkmark -->
+    <path d="M-34 -6 L-8 24 L44 -40" fill="none" stroke="#FFBF00" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- alert dots -->
+  <g fill="#EED9DF" opacity=".55">
+    <circle cx="120" cy="70" r="4"/><circle cx="690" cy="80" r="4"/><circle cx="640" cy="300" r="4"/><circle cx="150" cy="300" r="4"/>
+  </g>
+
+  <text x="40" y="336" font-family="'IBM Plex Mono',monospace" font-size="15" fill="#EED9DF" opacity=".85">03 &#183; Adaptive, explainable cyber defense</text>
+</svg>
