@@ -1,8 +1,10 @@
 # NSF REU Site: Recruitment Website + Application Backend
 
-A complete recruitment site for an NSF REU Site (solicitation 23-601), with an
-application form backed by Express + SQLite, transcript uploads, an admin
-review panel, and a light/dark theming system.
+A complete recruitment site for the **SURE-AI** NSF REU Site at UA Little Rock
+(NSF 23-601) — a fully funded, eight-week summer program for a cohort of 10 in
+efficient, secure, and trustworthy AI. It pairs the public recruitment pages
+with an application form backed by Express + SQLite, transcript uploads, an
+admin review panel, and a light/dark theming system.
 
 ## Run locally
 
@@ -55,14 +57,17 @@ Quick check: `curl http://localhost:3000/api/health` returns `{"ok":true}`.
 ### Run the tests (optional)
 
 ```bash
-npm test        # runs node --test over the test/ suite (196 tests)
+npm test        # runs node --test over the test/ suite
 ```
 
 ## Structure
 
 ```
 server.js               Express backend (form API, admin API, static serving)
-public/index.html       Main recruitment site
+public/index.html       Overview / landing page
+public/research.html    Research: SURE-AI pathways, faculty, maps, badges, evaluation
+public/eligibility.html Eligibility & funding
+public/faq.html         Dates & FAQ
 public/apply.html       Application form (validates client side and server side)
 public/admin.html       Staff review panel (token protected)
 public/styles/theme.css Semantic token theming system (light/dark, extensible)

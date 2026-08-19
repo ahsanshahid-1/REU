@@ -1,20 +1,21 @@
 # REU Recruitment Website — Status Brief
 
-**Program:** NSF Research Experiences for Undergraduates (REU) Site — UA Little Rock (solicitation NSF 23-601)
+**Program:** SURE-AI — NSF Research Experiences for Undergraduates (REU) Site, UA Little Rock (NSF 23-601)
 **Prepared for:** Program leadership / business review
-**Status:** Working prototype, on track for the August 10 deadline
+**Status:** Working site with finalized SURE-AI content; published to the project GitHub repository
 
 ---
 
 ## 1. In one paragraph
 
-We have a complete, working recruitment website for the REU program. Prospective students
-can learn about the program, check their eligibility, create an account, and submit a full
-application with a transcript — end to end. Program staff can review, download, and export
-those applications through a private admin view. The site reflects NSF's requirements for a
-national, inclusive REU Site, and it is built to expand into a participant showcase after the
-award. What remains before launch is finalizing a small amount of program content (mentor
-names, specific project write-ups) and connecting it to the university's email system.
+We have a complete, working recruitment website for the SURE-AI REU program — a fully funded,
+eight-week summer program for a cohort of 10 in efficient, secure, and trustworthy AI. Prospective
+students can learn about the program, check their eligibility, create an account, and submit a full
+application with a transcript — end to end. Program staff can review, download, and export those
+applications through a private admin view. The site presents the five SURE-AI research pathways and
+the named faculty mentors, reflects NSF's requirements for a national, inclusive REU Site, and is
+built to expand into a participant showcase after the award. What remains before launch is
+connecting the university's email system and deploying on campus hosting.
 
 ---
 
@@ -81,17 +82,13 @@ We didn't just build features — we verified them.
 
 ## 6. What's left before we go live
 
-Three focused items, none of them large:
+Two focused items, neither of them large:
 
-1. **Finalize program content (targeted for Aug 6).** Named mentor profiles and detailed project
-   descriptions are the main gap. The site is built so this content drops into pre-marked slots
-   without any rework. Until then, those spots show a consistent "published upon award" note
-   rather than blanks or placeholders.
-2. **Connect real email.** Today, in our testing setup, verification codes appear on screen for
+1. **Connect real email.** Today, in our testing setup, verification codes appear on screen for
    convenience. For launch we connect the site to the university's email system (or a standard
    email service) so codes and confirmations actually reach applicants. This is a configuration
    step, not new development.
-3. **Deploy on university-appropriate hosting with a web address.** For a live program handling
+2. **Deploy on university-appropriate hosting with a web address.** For a live program handling
    student data, this should sit on university-managed infrastructure with secure (HTTPS) access.
    The site is packaged to hand off to campus IT, and we've documented the required steps —
    including NSF's requirement to provide the live web address to the program officer within
@@ -105,8 +102,8 @@ Three focused items, none of them large:
   the program to a submitted application today."
 - "It's built directly against NSF's REU expectations, so it doubles as evidence of our
   recruitment and communication plan for reviewers."
-- "The only remaining work is finalizing mentor/project content, turning on real email, and
-  deploying on campus infrastructure — all planned and low-risk."
+- "The only remaining work is turning on real email and deploying on campus infrastructure —
+  both planned and low-risk."
 - "Sensitive student data handling and accessibility are built in, with formal university sign-off
   as the expected next checkpoint before we collect real applications."
 
@@ -118,7 +115,6 @@ Three focused items, none of them large:
 |------|--------|--------|
 | Working site (info, accounts, application, admin, assistant) | Complete | — |
 | Quality/accessibility/security groundwork | Complete | — |
-| Finalized mentor & project content | Pending team input | Aug 6 |
+| Finalized SURE-AI mentor & project content | Complete | — |
 | Real email connected | Configuration step | Before launch |
 | Deployed on campus hosting + URL to NSF | Ready to hand off | Within 90 days of award |
-| Proposal deadline | On track | Aug 10 |

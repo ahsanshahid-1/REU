@@ -1,4 +1,9 @@
-# Structured content slots (Aug 6 mentor/research deliverable)
+# Structured content slots (optional / legacy)
+
+> **Note:** the Research page (`public/research.html`) now publishes the named faculty profiles
+> and the five SURE-AI research pathways **directly** in the page. These JSON slots are retained
+> as an optional mechanism; they are not required for the current site.
+
 
 These JSON files are the **content slots** that drive the "published upon award"
 treatment on the public pages (Requirement 18.2–18.4, Requirement 2.6). They are
@@ -14,7 +19,7 @@ Each file holds a JSON **array**.
   to show, so it is visible even with JS disabled (Requirement 17.5).
 - **Populated array**: `site.js` renders the finalized content in place of the
   withheld statement. This is a pure data drop-in — **no code change** is needed to
-  publish the Aug 6 deliverable. Just replace `[]` with the real entries and flip
+  populate this content. Just replace `[]` with the real entries and flip
   the matching rows in `../../CONTENT.md` to `finalized`.
 
 Finalized content replaces the placeholder **only when it is actually finalized**
@@ -29,8 +34,8 @@ Finalized content replaces the placeholder **only when it is actually finalized*
 [
   {
     "name": "Dr. Jane Doe",
-    "title": "Associate Professor of Materials Science",
-    "area": "Nanotechnology and advanced materials",
+    "title": "Assistant Professor of Computer Science",
+    "area": "Efficient, secure, and trustworthy AI",
     "focus": "One or two sentences describing the mentor's active research.",
     "mentoring": "Undergraduate mentoring record (students advised, undergraduate coauthors, etc.)."
   }
@@ -42,7 +47,7 @@ Finalized content replaces the placeholder **only when it is actually finalized*
 ```json
 [
   {
-    "area": "Data science and analytics",
+    "area": "Data-quality-aware adaptive and explainable cyber defense",
     "title": "Example project title",
     "description": "One paragraph describing a representative student project in this area."
   }
