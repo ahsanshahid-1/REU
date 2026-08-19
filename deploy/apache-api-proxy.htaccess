@@ -1,0 +1,28 @@
+# Reverse-proxy the dynamic API to the Node app (accounts, login, apply, chat).
+#
+# WHAT THIS DOES
+#   Forwards every request under /api/ on the public site
+#   (https://reu.crc.ualr.edu/api/...) to the Node server listening on
+#   127.0.0.1:3000, so logins and application submissions actually reach the
+#   database. Static pages (index.html, research.html, assets, ...) are served
+#   normally by the web server and are NOT affected.
+#
+# HOW TO INSTALL (on the CRC container, no root required IF Apache allows it)
+#   cp ~/reu/deploy/apache-api-proxy.htaccess /var/www/reu/.htaccess
+#   then load https://reu.crc.ualr.edu/api/health  -> should return {"ok":true}
+#
+# REQUIREMENTS (all must be true for this to work)
+#   - The public server is Apache (not nginx).
+#   - mod_proxy, mod_proxy_http, and mod_rewrite are enabled.
+#   - The <Directory> for /var/www/reu has "AllowOverride FileInfo" (or All).
+#
+# IF THE SITE BREAKS (500 error on any page)
+#   Apache is missing a required module or AllowOverride is off. Just remove it:
+#   rm /var/www/reu/.htaccess
+#   ...and use Path 2 instead (ask CRC to add the proxy in the vhost config).
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # /api/anything  ->  http://127.0.0.1:3000/api/anything  (proxied in place)
+  RewriteRule ^api/(.*)$ http://127.0.0.1:3000/api/$1 [P,L]
+</IfModule>
