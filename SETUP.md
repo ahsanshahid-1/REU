@@ -26,11 +26,15 @@ Note: env vars are read from the process environment — there is **no `dotenv`*
 so a `.env` file is not auto-loaded. Pass variables inline (as above) or
 `export` them in your shell first.
 
-Open http://localhost:3000. Create an account (any **`.edu`** email — non-`.edu`
-addresses are rejected at registration), open the browser console to see the
-dev verification code (also printed in the server terminal), verify, and submit
-a test application. Review it at http://localhost:3000/admin.html with your
-ADMIN_TOKEN. Run the test suite with `npm test`.
+Open http://localhost:3000. The public pages (Overview, Research, Eligibility,
+Dates & FAQ) route applicants to **NSF ETAP** (https://etap.nsf.gov) — the site
+no longer collects applications on-site. Run the test suite with `npm test`.
+
+> The on-site account/application backend still exists in the code but is not
+> linked from the UI. If you want to exercise it locally for reference, POST
+> directly to `/api/auth/*` and `/api/applications` (with `DEV_ECHO_CODES=1` to
+> see verification codes), and review submissions at
+> http://localhost:3000/admin.html with your `ADMIN_TOKEN`.
 
 ## 2. The database: how it works
 
@@ -118,9 +122,17 @@ INSERTs (or use pgloader, which automates SQLite → Postgres).
 
 ## 5. Production checklist
 
-- [ ] Replace every [bracketed placeholder] in index.html, apply.html,
-      account.html (PI name, contact email, research areas, dates).
-- [ ] Set a strong `ADMIN_TOKEN`; never enable `DEV_ECHO_CODES`.
+- [ ] Confirm every Apply CTA links to the program's **NSF ETAP** listing
+      (https://etap.nsf.gov); applications are collected there, not on-site.
+      `apply.html` and `account.html` are ETAP notice pages.
+- [ ] Update the **tentative** dates as they are confirmed (statusbar/hero in
+      index.html, FAQ timeline in faq.html, and the `dates` chunk in
+      lib/knowledge.js). Replace any PI name/contact placeholders where present.
+- [ ] On the CRC container, publish static pages to Apache's DocumentRoot after
+      each pull (`bash deploy.sh`) — a `git pull` alone does not update
+      `/var/www/reu`. See DEPLOY.md.
+- [ ] Set a strong `ADMIN_TOKEN`; never enable `DEV_ECHO_CODES`. (Only relevant
+      if you keep the unused on-site application backend.)
 - [ ] Configure real email: set `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE`,
       `SMTP_USER`, `SMTP_PASS`, and `MAIL_FROM` (UALR SMTP relay, or SES/
       SendGrid) so the Email_Service (`lib/email.js`) sends verification codes

@@ -21,11 +21,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .skip-link:focus{left:0}
 
 /* ---------- UA Little Rock wordmark (header brand) ---------- */
-/* The stacked "UA / LITTLE ROCK" mark used as the site header brand, linking
-   back to ualr.edu. Uses semantic tokens so it stays WCAG AA in light + dark. */
-.uni-wordmark{display:inline-flex;align-items:center;gap:8px;text-decoration:none;line-height:1}
-.uni-wordmark .uw-ua{background:var(--action-primary-bg);color:var(--action-primary-fg);font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;padding:5px 7px;border-radius:4px;letter-spacing:.02em}
-.uni-wordmark .uw-lr{font-family:'Archivo',sans-serif;font-weight:700;font-size:11.5px;line-height:1.05;letter-spacing:.07em;color:var(--fg-primary);text-transform:uppercase}
+/* Official UA Little Rock logo (maroon + silver) used as the site header brand,
+   linking back to ualr.edu. In dark mode the fixed-color logo sits on a white
+   pill so it stays legible and on-brand against the dark header. */
+.uni-logo{display:inline-flex;align-items:center;text-decoration:none;line-height:0}
+.uni-logo img{height:38px;width:auto;display:block}
+:root.dark .uni-logo{background:#fff;padding:5px 9px;border-radius:8px}
+@media (prefers-color-scheme: dark){
+  :root:not(.light) .uni-logo{background:#fff;padding:5px 9px;border-radius:8px}
+}
 
 /* ---------- header ---------- */
 .statusbar{background:var(--bg-inset);border-bottom:1px solid var(--border-default);font-size:13px;color:var(--fg-secondary);padding:8px 0}

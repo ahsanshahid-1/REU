@@ -1,10 +1,20 @@
 # NSF REU Site: Recruitment Website + Application Backend
 
-A complete recruitment site for the **SURE-AI** NSF REU Site at UA Little Rock
+A recruitment site for the **SURE-AI** NSF REU Site at UA Little Rock
 (NSF 23-601) — a fully funded, eight-week summer program for a cohort of 10 in
-efficient, secure, and trustworthy AI. It pairs the public recruitment pages
-with an application form backed by Express + SQLite, transcript uploads, an
-admin review panel, and a light/dark theming system.
+efficient, secure, and trustworthy AI.
+
+> **Applications are handled entirely through NSF ETAP** (https://etap.nsf.gov).
+> The site is informational and routes every applicant to ETAP; it no longer
+> collects applications on-site. The on-site application form and applicant
+> account/login pages were removed (`apply.html` and `account.html` are now
+> ETAP notice pages). The Express + SQLite backend (auth, application intake,
+> admin review) remains in the codebase for reference but is **no longer wired
+> to the UI**; the public pages do not call it. Program and application dates
+> are shown as **tentative and subject to change** until confirmed.
+
+It pairs the public recruitment pages with a light/dark theming system and a
+retrieval-augmented assistant, plus the (now-unused) Express + SQLite backend.
 
 ## Run locally
 
@@ -68,7 +78,8 @@ public/index.html       Overview / landing page
 public/research.html    Research: SURE-AI pathways, faculty, maps, badges, evaluation
 public/eligibility.html Eligibility & funding
 public/faq.html         Dates & FAQ
-public/apply.html       Application form (validates client side and server side)
+public/apply.html       Notice page → directs applicants to NSF ETAP (on-site form removed)
+public/account.html     Notice page → directs applicants to NSF ETAP (accounts removed)
 public/admin.html       Staff review panel (token protected)
 public/styles/theme.css Semantic token theming system (light/dark, extensible)
 public/styles/site.css  Components; consume ONLY tokens from theme.css
@@ -77,10 +88,16 @@ data/applications.db    SQLite database (created on first run)
 data/uploads/           Transcript PDFs (created on first run)
 ```
 
-## Applicant accounts (auth)
+## Applicant accounts (auth) — retained but not used
 
-Applying requires a verified applicant account. Affiliation is derived from
-the email domain and verified by the email code:
+> **Applicants no longer create an account here.** Applications go through NSF
+> ETAP (https://etap.nsf.gov). The flow below describes the on-site backend that
+> still exists in `server.js`/`lib/` but is no longer exposed in the UI. It is
+> kept for reference and can be fully removed if you never plan to collect
+> applications on-site.
+
+The (unused) on-site flow required a verified applicant account. Affiliation is
+derived from the email domain and verified by the email code:
 
 - `@ualr.edu` / `@trojans.ualr.edu` → **ualr** (campus student)
 - any other domain → **external**
@@ -108,6 +125,11 @@ register an app in the university tenant, use `openid-client` against
 students keep password auth.
 
 ## API
+
+> These endpoints still exist in `server.js`, but the applicant-facing ones
+> (`/api/auth/*`, `/api/applications`) are **no longer called by the site** —
+> applications are collected by NSF ETAP. `/api/chat` (assistant) and
+> `/api/health` are the endpoints the live UI still uses.
 
 | Method | Path                            | Auth    | Purpose |
 |--------|---------------------------------|---------|---------|
@@ -148,14 +170,23 @@ for how a full retheme touches exactly one file.
 
 ## Before going live
 
-1. Replace `[PI Name]`, phone, email, and dates in both HTML files.
-2. Set `ADMIN_TOKEN` and serve behind HTTPS (any reverse proxy or a host like
-   Render, Railway, or Fly.io; the app is a single Node process).
-3. Wire confirmation email: the hook point is marked in `server.js` in the
-   POST handler (`nodemailer`, SES, or your university relay).
-4. Back up `data/` (database + uploads) on a schedule; it contains applicant
-   personal data, so restrict access accordingly and add a retention policy.
+1. Confirm every Apply CTA points to the program's **NSF ETAP** listing
+   (https://etap.nsf.gov). Applications are collected there, not on this site.
+2. Replace the PI name/contact placeholders where present, and update the
+   **tentative** dates as they are confirmed (statusbar + hero on `index.html`,
+   FAQ timeline on `faq.html`, and the `dates` chunk in `lib/knowledge.js`).
+3. Set `ADMIN_TOKEN` and serve behind HTTPS (any reverse proxy or a host like
+   Render, Railway, or Fly.io; the app is a single Node process). On the CRC
+   container the site is served by Apache from a DocumentRoot (`/var/www/reu`)
+   with `/api` proxied to Node — see DEPLOY.md and `deploy.sh`.
+4. The assistant (`/api/chat`) is the main live backend feature; verify it
+   answers correctly after content changes.
 5. NSF requirement: furnish the site URL to your cognizant NSF program officer
    within 90 days of award notification.
 6. After the program starts, add a cohort page: participants, projects,
    symposium talks, posters, and publications.
+
+> If you keep the (now-unused) on-site application backend, the earlier
+> production notes still apply: strong `ADMIN_TOKEN`, real SMTP, and scheduled
+> backups of `data/` (applicant PII). If you rely solely on ETAP, that backend
+> can be left dormant or removed.

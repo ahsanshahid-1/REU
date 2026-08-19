@@ -10,12 +10,13 @@
 
 We have a complete, working recruitment website for the SURE-AI REU program — a fully funded,
 eight-week summer program for a cohort of 10 in efficient, secure, and trustworthy AI. Prospective
-students can learn about the program, check their eligibility, create an account, and submit a full
-application with a transcript — end to end. Program staff can review, download, and export those
-applications through a private admin view. The site presents the five SURE-AI research pathways and
+students can learn about the program, check their eligibility, review the (tentative) timeline, and
+are routed to **NSF ETAP** to apply — applications are handled entirely through NSF's Education &
+Training Application, not on this site. The site presents the five SURE-AI research pathways and
 the named faculty mentors, reflects NSF's requirements for a national, inclusive REU Site, and is
-built to expand into a participant showcase after the award. What remains before launch is
-connecting the university's email system and deploying on campus hosting.
+built to expand into a participant showcase after the award. Program and application dates are shown
+as tentative and subject to change until confirmed. The site is live on UA Little Rock's CRC
+infrastructure at reu.crc.ualr.edu.
 
 ---
 
@@ -33,13 +34,17 @@ connecting the university's email system and deploying on campus hosting.
   subject to change, with the exact application window and program dates to be posted once confirmed.
 - **Ask questions any time** via a built-in assistant that answers from the site's own content.
 
-## 3. What program staff can do today
+## 3. How applications are reviewed
 
-- Sign in to a **private review area** with a secure staff key.
-- **See every application** at a glance, including a breakdown of how many candidates come from
-  our own campus versus other institutions (a metric NSF cares about).
-- **Open any application, download the transcript, and export the whole pool to a spreadsheet**
-  for committee review.
+- **Applications are submitted and managed in NSF ETAP.** ETAP maintains the national applicant
+  pool and is where staff review applicants, so intake and committee review happen in NSF's system
+  rather than on our site.
+- The site's role is recruitment and information: it drives a broad, diverse pool of applicants to
+  ETAP and answers their questions.
+
+> A private on-site review panel (staff key, per-application view, transcript download, CSV export
+> with the campus-vs-external breakdown) still exists in the codebase from the earlier build, but it
+> is not part of the current ETAP-based workflow and is not linked from the site.
 
 ---
 
@@ -63,8 +68,9 @@ The site was built specifically around what NSF reviewers look for in an REU Sit
 
 We didn't just build features — we verified them.
 
-- The application, account, email, admin, and assistant functions are covered by an **automated
-  test suite that runs clean**, so we can make changes with confidence that nothing breaks.
+- The public content, assistant, and remaining backend functions are covered by an **automated
+  test suite that runs clean** (194 tests pass), so we can make changes with confidence that
+  nothing breaks.
 - **Accessibility** was addressed throughout: the site works with screen readers and keyboard
   navigation, meets recognized color-contrast standards in both light and dark modes, and the
   core information remains readable even if a browser has scripting turned off.
@@ -80,32 +86,28 @@ We didn't just build features — we verified them.
 
 ---
 
-## 6. What's left before we go live
+## 6. Status and what's left
 
-Two focused items, neither of them large:
-
-1. **Connect real email.** Today, in our testing setup, verification codes appear on screen for
-   convenience. For launch we connect the site to the university's email system (or a standard
-   email service) so codes and confirmations actually reach applicants. This is a configuration
-   step, not new development.
-2. **Deploy on university-appropriate hosting with a web address.** For a live program handling
-   student data, this should sit on university-managed infrastructure with secure (HTTPS) access.
-   The site is packaged to hand off to campus IT, and we've documented the required steps —
-   including NSF's requirement to provide the live web address to the program officer within
-   90 days of the award.
+- **Live.** The site is deployed on UA Little Rock's CRC infrastructure at reu.crc.ualr.edu and
+  routes all applicants to NSF ETAP.
+- **Dates.** Program and application dates are shown as tentative and will be updated on the site
+  as soon as they are confirmed (applications expected to open around January 2027).
+- **Because applications go through ETAP,** the site does not collect student PII on-site, so the
+  on-site email/verification and database-hosting steps are no longer on the critical path.
+- **NSF requirement:** furnish the live web address to the cognizant NSF program officer within
+  90 days of award notification.
 
 ---
 
 ## 7. Suggested talking points for the meeting
 
-- "The recruitment site is functionally complete and tested — a student can go from learning about
-  the program to a submitted application today."
+- "The recruitment site is live on CRC infrastructure and routes every applicant to NSF ETAP, the
+  national application system NSF wants Sites to use."
 - "It's built directly against NSF's REU expectations, so it doubles as evidence of our
   recruitment and communication plan for reviewers."
-- "The only remaining work is turning on real email and deploying on campus infrastructure —
-  both planned and low-risk."
-- "Sensitive student data handling and accessibility are built in, with formal university sign-off
-  as the expected next checkpoint before we collect real applications."
+- "Applications are handled in NSF ETAP, so we're not collecting student PII on our own site —
+  that simplifies privacy/FERPA considerations."
+- "Dates are posted as tentative and will be updated the moment they're confirmed."
 
 ---
 
@@ -113,8 +115,9 @@ Two focused items, neither of them large:
 
 | Item | Status | Target |
 |------|--------|--------|
-| Working site (info, accounts, application, admin, assistant) | Complete | — |
-| Quality/accessibility/security groundwork | Complete | — |
+| Working site (info, assistant) routing applicants to NSF ETAP | Complete & live | — |
+| Quality/accessibility groundwork | Complete | — |
 | Finalized SURE-AI mentor & project content | Complete | — |
-| Real email connected | Configuration step | Before launch |
-| Deployed on campus hosting + URL to NSF | Ready to hand off | Within 90 days of award |
+| Deployed on CRC infrastructure (reu.crc.ualr.edu) | Live | — |
+| Confirm & publish exact program/application dates | Pending (tentative shown) | When NSF/ETAP confirms |
+| Furnish live URL to NSF program officer | Pending | Within 90 days of award |

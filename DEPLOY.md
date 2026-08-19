@@ -1,5 +1,47 @@
 # Deploying the REU Site
 
+> **Current status: applications are handled by NSF ETAP** (https://etap.nsf.gov).
+> The site is informational and routes applicants to ETAP; the on-site
+> application form and applicant accounts were removed. This means the live site
+> is effectively **static pages + the `/api/chat` assistant** — it no longer
+> needs to collect applicant PII on-site. The database/login backend below still
+> exists in the code but is not used by the UI. Program/application dates are
+> shown as **tentative and subject to change**.
+
+## Updating the live CRC deployment (reu.crc.ualr.edu)
+
+On the CRC JupyterHub container the site is served in **two places**, which is
+the common gotcha:
+
+1. **Apache** serves the static HTML from its DocumentRoot **`/var/www/reu`**
+   (this is what the browser loads). See `deploy/crc-apache-proxy-request.md`.
+2. **Node** (`server.js`) on `:3000` serves `/api/*` (the assistant + health);
+   Apache proxies `/api` to it.
+
+Because Apache's DocumentRoot is a **separate copy** from `~/reu/public`, a
+`git pull` alone does **not** change what visitors see. Publish the pages too:
+
+```bash
+cd ~/reu
+bash deploy.sh            # git pull + copy public/ into /var/www/reu
+bash deploy.sh --restart  # also restart the Node app (needed for /api or chatbot changes)
+```
+
+Equivalent manual steps:
+
+```bash
+cd ~/reu && git pull
+cp -a ~/reu/public/. /var/www/reu/                     # publish static pages Apache serves
+# only if server.js / lib/ changed (e.g. the chatbot):
+pkill -f "node server.js"; sleep 1
+ADMIN_TOKEN="$ADMIN_TOKEN" setsid nohup npm start > ~/reu/server.log 2>&1 &
+```
+
+The Node process runs inside the singleuser container, so it stops if the
+container is culled/restarted; re-run the start command (or `deploy.sh
+--restart`) to bring it back. Then hard-refresh the browser (Cmd/Ctrl+Shift+R),
+since `*.html` is not cache-busted.
+
 ## The one thing to understand first
 
 This site is **not just static HTML**. It runs a Node server with a database,
