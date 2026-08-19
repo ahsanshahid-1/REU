@@ -26,12 +26,12 @@ connecting the university's email system and deploying on campus hosting.
 - **See if they qualify** — NSF eligibility rules stated in plain language (citizenship,
   enrollment, community-college and transfer students, and who is not eligible).
 - **See the full funding picture** — stipend, housing, meals, travel, and "no fees, no tuition."
-- **Create an account and verify their email**, then **submit a complete application**:
-  personal statement, ranked project interests, two references, and a transcript upload.
-- **Get a confirmation number** immediately and a copy by email.
+- **Apply through NSF ETAP.** Applications are accepted only through NSF's Education & Training
+  Application (ETAP) at etap.nsf.gov; the site directs every applicant there and no longer collects
+  applications on-site.
+- **See the tentative timeline.** Program and application dates are presented as tentative and
+  subject to change, with the exact application window and program dates to be posted once confirmed.
 - **Ask questions any time** via a built-in assistant that answers from the site's own content.
-- **Apply either through our site or through NSF's national application system** — both are
-  presented as equal options.
 
 ## 3. What program staff can do today
 

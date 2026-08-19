@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apply | NSF REU Site at UA Little Rock</title>
-<meta name="description" content="Application for the Summer 2027 NSF REU program at UA Little Rock.">
+<title>Apply via NSF ETAP | NSF REU Site at UA Little Rock</title>
+<meta name="description" content="Applications to the UA Little Rock NSF REU are accepted only through NSF ETAP (etap.nsf.gov).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -32,318 +32,32 @@
 
 <main id="main">
 <section>
-  <div class="wrap" style="max-width:780px">
-    <span class="eyebrow">Summer 2027 application</span>
-    <h1 style="font-size:clamp(28px,3.6vw,40px);margin-bottom:10px">Apply to the REU</h1>
-    <p style="color:var(--fg-secondary);margin-bottom:8px">Takes about 25 minutes. There is no fee. You can also apply through <a class="ext" href="https://etap.nsf.gov" rel="noopener">NSF ETAP</a>; both routes receive identical consideration. Deadline: <strong>February 15, 2027, 11:59 p.m. Central Time</strong>.</p>
-    <div class="callout warn" role="note"><strong>Eligibility reminder.</strong> NSF requires REU participants to be U.S. citizens, U.S. nationals, or U.S. permanent residents, enrolled in (or accepted to) an undergraduate degree program. Details on the <a href="/eligibility.html">eligibility page</a>.</div>
+  <div class="wrap" style="max-width:720px">
+    <span class="eyebrow">Applying</span>
+    <h1 style="font-size:clamp(28px,3.6vw,40px);margin-bottom:12px">Apply through NSF ETAP</h1>
+    <p style="color:var(--fg-secondary);margin-bottom:18px">Applications to this REU are accepted <strong>only</strong> through NSF's Education &amp; Training Application (ETAP). There is no separate application on this site and no application fee. Dates are tentative and subject to change; the exact application window will be posted here once it is confirmed &mdash; applications are expected to open in <strong>January 2027</strong>.</p>
 
-    <div id="auth-gate" class="card" hidden style="margin-top:30px">
-      <h2 style="font-size:20px;margin-bottom:8px" id="gate-title">Sign in to apply</h2>
-      <p style="color:var(--fg-secondary);font-size:14.5px;margin-bottom:16px" id="gate-msg">The application is tied to a free applicant account so you can track its status. Creating one takes a minute.</p>
-      <a class="btn btn-primary" href="/account.html" id="gate-btn">Sign in or create an account</a>
+    <div class="callout info" role="note" style="margin-bottom:22px">
+      <strong>Eligibility reminder.</strong> NSF requires REU participants to be U.S. citizens, U.S. nationals, or U.S. permanent residents, enrolled in (or accepted to) an undergraduate degree program. Details are on the <a href="/eligibility.html">eligibility page</a>.
     </div>
 
-    <div id="acct-strip" class="callout info" hidden style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center">
-      <span>Applying as <strong id="acct-email-strip"></strong>. Your decision will be sent to this address.</span>
-      <a href="/account.html" style="white-space:nowrap">Account</a>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px">
+      <a class="btn btn-primary ext" href="https://etap.nsf.gov" rel="noopener" style="font-size:16px;padding:14px 30px">Go to NSF ETAP</a>
+      <a class="btn btn-secondary" href="/faq.html">See dates &amp; what to prepare</a>
     </div>
 
-    <form id="app-form" novalidate hidden style="margin-top:34px">
-
-      <fieldset>
-        <legend>1. About you</legend>
-        <div class="f2">
-          <div class="field">
-            <label for="first_name">First name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="first_name" name="first_name" required autocomplete="given-name">
-            <p class="err-msg">Please enter your first name.</p>
-          </div>
-          <div class="field">
-            <label for="last_name">Last name <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="last_name" name="last_name" required autocomplete="family-name">
-            <p class="err-msg">Please enter your last name.</p>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email_display" disabled>
-            <p class="hint">From your verified account. Wrong address? Sign out and register with the right one.</p>
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" autocomplete="tel">
-          </div>
-        </div>
-        <div class="field">
-          <label>Citizenship status <span class="req" aria-hidden="true">*</span></label>
-          <div class="radio-row" role="radiogroup" aria-label="Citizenship status">
-            <label><input type="radio" name="citizenship" value="us_citizen" required> U.S. citizen</label>
-            <label><input type="radio" name="citizenship" value="us_national" required> U.S. national</label>
-            <label><input type="radio" name="citizenship" value="permanent_resident" required> U.S. permanent resident</label>
-            <label><input type="radio" name="citizenship" value="other" required> None of these</label>
-          </div>
-          <p class="hint">Required by NSF for all REU participants. Selecting "None of these" means we cannot offer you a funded place, and we would rather tell you now than after you write a statement.</p>
-          <p class="err-msg" id="citizenship-err">Please select your citizenship status.</p>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>2. Your institution</legend>
-        <div class="f2">
-          <div class="field">
-            <label for="institution">Current institution <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="institution" name="institution" required>
-            <p class="hint">If you are an accepted high school graduate, enter the institution you will attend.</p>
-            <p class="err-msg">Please enter your institution.</p>
-          </div>
-          <div class="field">
-            <label for="institution_type">Institution type <span class="req" aria-hidden="true">*</span></label>
-            <select id="institution_type" name="institution_type" required>
-              <option value="">Select one…</option>
-              <option value="community_college">Community or two year college</option>
-              <option value="pui">Primarily undergraduate institution</option>
-              <option value="msi">Minority serving institution</option>
-              <option value="research_university">Research university</option>
-              <option value="other">Other / not sure</option>
-            </select>
-            <p class="hint">Used only to honor our NSF recruitment commitments. "Not sure" is a fine answer.</p>
-            <p class="err-msg">Please select an institution type.</p>
-          </div>
-          <div class="field">
-            <label for="major">Major or intended major <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="major" name="major" required>
-            <p class="err-msg">Please enter your major.</p>
-          </div>
-          <div class="field">
-            <label for="year">Year completed by June 2027 <span class="req" aria-hidden="true">*</span></label>
-            <select id="year" name="year" required>
-              <option value="">Select one…</option>
-              <option>None yet (accepted high school graduate)</option>
-              <option>First year</option>
-              <option>Sophomore</option>
-              <option>Junior</option>
-              <option>Senior (graduating after Aug 2027)</option>
-              <option>Transferring between institutions this summer</option>
-            </select>
-            <p class="err-msg">Please select your year.</p>
-          </div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>3. Research interests</legend>
-        <div class="field">
-          <label for="theme1">First choice project area <span class="req" aria-hidden="true">*</span></label>
-          <select id="theme1" name="theme1" required>
-            <option value="">Select one…</option>
-            <option>Nanotechnology and advanced materials</option>
-            <option>Nanomedicine and bioengineering</option>
-            <option>Data science and analytics</option>
-            <option>Immersive visualization and extended reality</option>
-            <option>Cybersecurity and resilient computing</option>
-            <option>Applied mathematics and computational modeling</option>
-          </select>
-          <p class="err-msg">Please choose a first choice project area.</p>
-        </div>
-        <div class="field">
-          <label for="theme2">Second choice project area</label>
-          <select id="theme2" name="theme2">
-            <option value="">Select one…</option>
-            <option>Nanotechnology and advanced materials</option>
-            <option>Nanomedicine and bioengineering</option>
-            <option>Data science and analytics</option>
-            <option>Immersive visualization and extended reality</option>
-            <option>Cybersecurity and resilient computing</option>
-            <option>Applied mathematics and computational modeling</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="statement">Personal statement <span class="req" aria-hidden="true">*</span></label>
-          <textarea id="statement" name="statement" rows="10" required minlength="1200" aria-describedby="stmt-hint"></textarea>
-          <p class="hint" id="stmt-hint">300 to 600 words: what draws you to this area, what you hope a research summer does for you, and anything about your path we should understand. We read for curiosity, not polish. <span id="wc" class="mono">0 words</span></p>
-          <p class="err-msg">Please write at least 300 words (about 1,200 characters).</p>
-        </div>
-        <div class="field">
-          <label for="transcript">Unofficial transcript (PDF, max 5 MB) <span class="req" aria-hidden="true">*</span></label>
-          <input type="file" id="transcript" name="transcript" accept="application/pdf" required>
-          <p class="hint">A screenshot exported to PDF from your student portal is fine. There is no GPA cutoff.</p>
-          <p class="err-msg" id="file-err">Please attach your transcript as a PDF under 5 MB.</p>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>4. References</legend>
-        <p class="hint" style="margin-bottom:16px">Two references, at least one from a course instructor. We email them a short form directly; you do not need to collect letters.</p>
-        <div class="f2">
-          <div class="field"><label for="ref1_name">Reference 1: name <span class="req" aria-hidden="true">*</span></label><input type="text" id="ref1_name" name="ref1_name" required><p class="err-msg">Required.</p></div>
-          <div class="field"><label for="ref1_email">Reference 1: email <span class="req" aria-hidden="true">*</span></label><input type="email" id="ref1_email" name="ref1_email" required><p class="err-msg">Valid email required.</p></div>
-          <div class="field"><label for="ref2_name">Reference 2: name <span class="req" aria-hidden="true">*</span></label><input type="text" id="ref2_name" name="ref2_name" required><p class="err-msg">Required.</p></div>
-          <div class="field"><label for="ref2_email">Reference 2: email <span class="req" aria-hidden="true">*</span></label><input type="email" id="ref2_email" name="ref2_email" required><p class="err-msg">Valid email required.</p></div>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend>5. Voluntary demographic information</legend>
-        <p class="hint" style="margin-bottom:16px">Entirely optional, never used in eligibility or selection decisions, and stored separately from your application review file. NSF asks REU programs to understand who their outreach reaches; participants also receive NSF's own voluntary demographic survey via Research.gov. Skip anything you prefer not to answer.</p>
-        <div class="f2">
-          <div class="field">
-            <label for="first_gen">Are you a first generation college student?</label>
-            <select id="first_gen" name="first_gen"><option value="">Prefer not to answer</option><option>Yes</option><option>No</option><option>Not sure</option></select>
-          </div>
-          <div class="field">
-            <label for="veteran">Are you a veteran or active service member?</label>
-            <select id="veteran" name="veteran"><option value="">Prefer not to answer</option><option>Yes</option><option>No</option></select>
-          </div>
-        </div>
-        <div class="field">
-          <label for="outreach">How did you hear about this program?</label>
-          <input type="text" id="outreach" name="outreach" placeholder="Professor, NSF REU directory, a friend, social media…">
-          <p class="hint">This one genuinely helps us: NSF asks us to report on recruiting efforts.</p>
-        </div>
-      </fieldset>
-
-      <!-- honeypot: hidden from humans, bots fill it -->
-      <div style="position:absolute;left:-9999px" aria-hidden="true">
-        <label for="website">Website</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-      </div>
-
-      <div class="field">
-        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:500">
-          <input type="checkbox" id="certify" required style="margin-top:4px;accent-color:var(--action-primary-bg)">
-          <span>I certify that the information above is accurate, and I understand that selection complies with Federal and NSF non-discrimination statutes and regulations. <span class="req" aria-hidden="true">*</span></span>
-        </label>
-        <p class="err-msg" id="certify-err">Please certify before submitting.</p>
-      </div>
-
-      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-
-      <button class="btn btn-primary" type="submit" id="submit-btn" style="font-size:16px;padding:14px 30px">
-        <span class="spinner" aria-hidden="true"></span>
-        <span class="btn-text">Submit application</span>
-      </button>
-      <p class="hint" style="margin-top:10px">You will see a confirmation number on this page and receive it by email. Something not working? Email your materials to <a href="mailto:reu@ualr.edu">reu@ualr.edu</a> and we will enter them for you.</p>
-    </form>
+    <p class="hint">Questions about applying or eligibility? Email <a href="mailto:reu@ualr.edu">reu@ualr.edu</a> and we will help.</p>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="fine" style="border-top:none;padding-top:0">This application collects only what is needed to evaluate you for the program. Demographic responses are voluntary and are not used in selection. Questions about data handling: <a href="mailto:reu@ualr.edu">reu@ualr.edu</a>.</div>
+    <div class="fine" style="border-top:none;padding-top:0">Applications are handled entirely by NSF ETAP. Questions about the program: <a href="mailto:reu@ualr.edu">reu@ualr.edu</a>.</div>
   </div>
 </footer>
 
 <script src="/js/site.js" defer></script>
-<script>
-(function(){
-  var form = document.getElementById('app-form');
-
-  // ----- auth gate -----
-  fetch('/api/auth/me').catch(function(){ return null; }).then(function(r){ return (r && r.ok) ? r.json() : null; }).then(function(me){
-    var gate = document.getElementById('auth-gate');
-    var strip = document.getElementById('acct-strip');
-    if (!me){ gate.hidden = false; return; }
-    if (!me.verified){
-      gate.hidden = false;
-      document.getElementById('gate-title').textContent = 'Verify your email to apply';
-      document.getElementById('gate-msg').textContent = 'You are signed in as ' + me.email + ', but the address is not verified yet. Enter the code we emailed you on the Account page to unlock this form.';
-      document.getElementById('gate-btn').textContent = 'Go to verification';
-      return;
-    }
-    if (me.application){
-      gate.hidden = false;
-      document.getElementById('gate-title').textContent = 'Application already submitted';
-      document.getElementById('gate-msg').textContent = 'Your confirmation number is ' + me.application.confirmation + '. To change anything, email reu@ualr.edu with that number.';
-      document.getElementById('gate-btn').textContent = 'View your application status';
-      return;
-    }
-    strip.hidden = false;
-    document.getElementById('acct-email-strip').textContent = me.email;
-    document.getElementById('email').value = me.email;
-    form.hidden = false;
-  });
-  var status = document.getElementById('form-status');
-  var btn = document.getElementById('submit-btn');
-  var btnText = btn.querySelector('.btn-text');
-  var stmt = document.getElementById('statement');
-  var wc = document.getElementById('wc');
-
-  stmt.addEventListener('input', function(){
-    var words = stmt.value.trim() ? stmt.value.trim().split(/\s+/).length : 0;
-    wc.textContent = words + ' words';
-  });
-
-  function setInvalid(el, invalid){
-    el.setAttribute('aria-invalid', invalid ? 'true' : 'false');
-  }
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    status.className = 'form-status';
-    var firstBad = null;
-
-    // native checks + custom marking
-    var fields = form.querySelectorAll('input[required],select[required],textarea[required]');
-    fields.forEach(function(el){
-      var ok = el.checkValidity();
-      if (el.type === 'radio') {
-        ok = !!form.querySelector('input[name="'+el.name+'"]:checked');
-        document.getElementById('citizenship-err').style.display = ok ? 'none' : 'block';
-      } else if (el.type === 'checkbox') {
-        document.getElementById('certify-err').style.display = el.checked ? 'none' : 'block';
-      } else {
-        setInvalid(el, !ok);
-      }
-      if (!ok && !firstBad) firstBad = el;
-    });
-
-    // file check
-    var file = document.getElementById('transcript');
-    var f = file.files[0];
-    var fileOk = f && f.type === 'application/pdf' && f.size <= 5*1024*1024;
-    setInvalid(file, !fileOk);
-    if (!fileOk && !firstBad) firstBad = file;
-
-    var stmtOk = stmt.value.trim().length >= 1200;
-    setInvalid(stmt, !stmtOk);
-    if (!stmtOk && !firstBad) firstBad = stmt;
-
-    if (firstBad){
-      status.className = 'form-status bad';
-      status.textContent = 'A few fields need attention. The first one is highlighted below; each problem field explains what it needs.';
-      firstBad.focus();
-      firstBad.scrollIntoView({behavior:'smooth', block:'center'});
-      return;
-    }
-
-    btn.disabled = true; btn.classList.add('loading');
-    btnText.textContent = 'Submitting…';
-
-    var data = new FormData(form);
-    fetch('/api/applications', { method:'POST', body:data })
-      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
-      .then(function(res){
-        if (res.ok){
-          status.className = 'form-status ok';
-          status.innerHTML = '<strong>Application received.</strong> Your confirmation number is <strong class="mono">' + res.j.confirmation + '</strong>. A copy has been sent to your email. We will contact your references directly, and every applicant receives a decision by March 20, 2027.';
-          form.reset(); wc.textContent = '0 words';
-          window.scrollTo({top: status.getBoundingClientRect().top + window.scrollY - 120, behavior:'smooth'});
-        } else {
-          throw new Error(res.j && res.j.error ? res.j.error : 'Submission failed');
-        }
-      })
-      .catch(function(err){
-        status.className = 'form-status bad';
-        status.textContent = 'We could not submit your application: ' + err.message + '. Your answers are still on this page. Please try again, or email reu@ualr.edu and we will enter your application for you.';
-      })
-      .finally(function(){
-        btn.disabled = false; btn.classList.remove('loading');
-        btnText.textContent = 'Submit application';
-      });
-  });
-})();
-</script>
 <script src="/js/chat.js" defer></script>
 </body>
 </html>

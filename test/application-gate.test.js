@@ -114,36 +114,17 @@ test('a verified session passes both gates and is not blocked by 401/403 (Req 14
   }
 });
 
-test('apply form presents voluntary demographics as optional and not used in selection (Req 14.9)', () => {
+test('apply.html routes applicants to NSF ETAP (on-site application form removed)', () => {
+  // Applications are now accepted only through NSF ETAP; the on-site form and
+  // its voluntary-demographic section were removed. The apply page must instead
+  // direct applicants to ETAP and carry no <form>.
   const html = fs.readFileSync(APPLY_HTML_PATH, 'utf8');
   const root = parse(html);
 
-  const demographicIds = ['first_gen', 'veteran', 'outreach'];
-  const fields = demographicIds.map((id) => {
-    const el = root.querySelector('#' + id);
-    assert.ok(el, `demographic field #${id} is present on the apply form`);
-    return el;
-  });
+  assert.equal(root.querySelectorAll('form').length, 0,
+    'apply.html must not contain an on-site application form');
 
-  // Each demographic field is optional: no `required` attribute.
-  for (const el of fields) {
-    assert.equal(
-      el.getAttribute('required'),
-      undefined,
-      `demographic field #${el.getAttribute('id')} must not be required`,
-    );
-  }
-
-  // The demographic fields live in a shared section that must label them optional
-  // and state they are not used in eligibility or selection.
-  const fieldset = fields[0].closest('fieldset');
-  assert.ok(fieldset, 'demographic fields are grouped in a fieldset');
-  const sectionText = fieldset.text.replace(/\s+/g, ' ').trim();
-
-  assert.match(sectionText, /optional/i, 'the demographic section is labeled optional');
-  assert.match(
-    sectionText,
-    /(not|never) used in eligibility or selection/i,
-    'the demographic section states the fields are not used in eligibility or selection',
-  );
+  const etapLink = root.querySelectorAll('a').find((a) =>
+    /etap\.nsf\.gov/i.test(a.getAttribute('href') || ''));
+  assert.ok(etapLink, 'apply.html must link to the NSF ETAP application (etap.nsf.gov)');
 });

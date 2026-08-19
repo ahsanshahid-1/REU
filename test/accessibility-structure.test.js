@@ -88,7 +88,10 @@ for (const page of PUBLIC_PAGES) {
 // Requirement 17.4 — every form control on apply.html is associated with a label
 // ---------------------------------------------------------------------------
 
-test('17.4 apply.html: every input/select/textarea has an associated label', () => {
+test('17.4 apply.html: any remaining form control has an associated label', () => {
+  // Applications moved to NSF ETAP, so the on-site application form was removed.
+  // The requirement still holds for any control that remains: it must be
+  // associated with a label. With no form present this passes vacuously.
   const doc = loadPage('apply.html');
 
   // ids referenced by an explicit <label for="...">
@@ -100,18 +103,10 @@ test('17.4 apply.html: every input/select/textarea has an associated label', () 
   );
 
   const controls = doc.querySelectorAll('input, select, textarea');
-  assert.ok(controls.length > 0, 'apply.html has no form controls to check');
-
   const unlabeled = [];
-  let honeypotSeen = false;
 
   for (const el of controls) {
-    // The anti-spam honeypot lives in an aria-hidden container and is not part
-    // of the accessible form; it is legitimately exempt from label association.
-    if (el.closest('[aria-hidden="true"]')) {
-      honeypotSeen = true;
-      continue;
-    }
+    if (el.closest('[aria-hidden="true"]')) continue;
 
     const id = (el.getAttribute('id') || '').trim();
     const hasForLabel = id && forTargets.has(id);
@@ -130,10 +125,6 @@ test('17.4 apply.html: every input/select/textarea has an associated label', () 
     unlabeled.length,
     0,
     `apply.html has unlabeled form controls: ${unlabeled.join(', ')}`,
-  );
-  assert.ok(
-    honeypotSeen,
-    'expected an aria-hidden honeypot field to be present and exempted',
   );
 });
 

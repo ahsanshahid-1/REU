@@ -109,7 +109,7 @@ test('Req 1.5: displays a pending-NSF-award status indicator', () => {
   );
 });
 
-test('Req 1.6: provides navigation to Research, Eligibility, FAQ, Account, and Apply', () => {
+test('Req 1.6: provides navigation to Research, Eligibility, FAQ, and the NSF ETAP application', () => {
   const hrefs = root
     .querySelectorAll('a')
     .map((a) => (a.getAttribute('href') || '').trim());
@@ -119,6 +119,9 @@ test('Req 1.6: provides navigation to Research, Eligibility, FAQ, Account, and A
   assert.ok(linksTo('/research.html'), 'expected a link to /research.html');
   assert.ok(linksTo('/eligibility.html'), 'expected a link to /eligibility.html');
   assert.ok(linksTo('/faq.html'), 'expected a link to /faq.html');
-  assert.ok(linksTo('/account.html'), 'expected a link to /account.html');
-  assert.ok(linksTo('/apply.html'), 'expected a link to /apply.html');
+  // Applications are handled by NSF ETAP; the Overview must route applicants there.
+  assert.ok(
+    hrefs.some((h) => /etap\.nsf\.gov/i.test(h)),
+    'expected an Apply link to NSF ETAP (etap.nsf.gov)',
+  );
 });

@@ -61,8 +61,8 @@ const WITHHELD_KEYS = [
 ];
 
 // finalized keys should NEVER carry a withheld data-state marker.
+// (program-dates is now `intermediate` — tentative dates, applications via NSF ETAP.)
 const FINALIZED_KEYS = [
-  'program-dates',
   'program-contact-email',
   'program-phone',
   'research-fields',
@@ -75,9 +75,6 @@ const FINALIZED_KEYS = [
 // Finalized values that must be visibly rendered (Req 18.2). Keyed by page.
 const FINALIZED_CONTENT = {
   'index.html': [
-    'Summer 2027',            // program-dates
-    'Nov 1, 2026',            // program-dates (open)
-    'Feb 15, 2027',           // program-dates (close)
     '$700 / week',            // stipend-amount
     '10 per year',            // cohort-size
     'ten students',           // cohort-size
@@ -86,11 +83,6 @@ const FINALIZED_CONTENT = {
     '(501) 916-3000',         // program-phone
   ],
   'faq.html': [
-    'Summer 2027',            // program-dates
-    'Nov 1, 2026',            // program-dates (open)
-    'Feb 15, 2027',           // program-dates (deadline)
-    'Mar 20, 2027',           // program-dates (decisions)
-    'Jul 24, 2027',           // program-dates (in residence end)
     CONTACT_EMAIL,
     '(501) 916-3000',
   ],

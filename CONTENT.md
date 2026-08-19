@@ -31,7 +31,7 @@ public site presents it (Requirement 18.2–18.4):
 | `pi-direct-contact` | `index.html` and `faq.html` — `#contact` block; footer fine print (all pages) | "The Principal Investigator's direct contact information is published upon award notification."; footer: "Named mentor profiles and the PI contact are published upon award." | `withheld-until-award` | On award, publish the PI's direct email/phone in the contact block. Consistent "published upon award" statement is shown until then (Req 18.3). |
 | `named-mentor-profiles` | `research.html` — `#mentors` cards; footer fine print (index/eligibility/faq) | Research page: seven named faculty/mentoring profiles (Drs. Elfikky, Basu, Milanova, Talburt, Spann, Zhang, and Michael E. Moore) with roles and expertise. Footer (other pages): "the final roster is confirmed upon NSF award notification." | `finalized` (Research page) | Names are **published** on the Research page, reflecting the proposed Senior/Key Personnel. The shared footer note on the other pages still defers the *award-time* final-roster confirmation (Req 2.6). |
 | `research-project-details` | `research.html` — `#activities` cards | Five research pathways, each with a full description, faculty leads, and an illustration | `finalized` | Published on the Research page with the five SURE-AI pathways (Req 2.6). |
-| `program-dates` | `index.html` — topbar/hero ("Summer 2027", open Nov 1 2026, close Feb 15 2027); `faq.html` — `#dates` timeline (open Nov 1 2026; deadline Feb 15 2027 11:59 p.m. CT; decisions Mar 20 2027; program Jun 1–Jul 24 2027, an 8-week cohort) | "applications open Nov 1, 2026 and close Feb 15, 2027"; timeline entries for open / deadline / decisions / in-residence dates | `finalized` | Displayed as-is. Calendar dates are placeholders sized to the 8-week program and should be confirmed; if they shift, update the topbar, hero kicker, and FAQ timeline together (Req 7.1). |
+| `program-dates` | `index.html` — statusbar/hero (tentative, "dates to be confirmed", apps open ~Jan 2027); `faq.html` — `#dates` timeline (tentative: apps open ~Jan 2027; deadline/decisions "to be announced"; program tentative ~Dec 2026, an 8-week cohort) | statusbar "Dates tentative & subject to change … applications expected to open January 2027"; timeline entries marked tentative / "to be announced" | `intermediate` | Dates are not yet confirmed. All date content is presented as tentative and subject to change; the exact application window and program dates are posted once NSF/ETAP confirms them. Applications are accepted only through NSF ETAP. If dates change, update the statusbar, hero kicker, and FAQ timeline together (Req 7.1). |
 | `program-contact-email` | All pages — `#contact` block, "Email the program team" button, "program at a glance" card, `mailto:` links; mirrored in `lib/knowledge.js` | `reu@ualr.edu` | `finalized` | Single consistent value used site-wide. Verified by a content check that no other contact address appears (Req 18.5). |
 | `program-phone` | `index.html` and `faq.html` — `#contact` block | "(501) 916-3000" (general UA Little Rock campus number) | `finalized` | General campus line, safe to publish pre-award. Replace with a direct program line if/when one is assigned. |
 | `research-fields` | `index.html` — "program at a glance" card | "Artificial intelligence, cybersecurity, data science" | `finalized` | Fixed program content describing the Site's fields (SURE-AI). No change expected (Req 1.3). |
@@ -43,11 +43,11 @@ public site presents it (Requirement 18.2–18.4):
 
 ## Summary of states
 
-- **finalized (10):** `program-dates`, `program-contact-email`, `program-phone`, `research-fields`,
+- **finalized (9):** `program-contact-email`, `program-phone`, `research-fields`,
   `common-intellectual-focus`, `research-project-areas`, `cohort-size`, `stipend-amount`,
   `named-mentor-profiles` (published on the Research page), `research-project-details`.
 - **withheld-until-award (3):** `award-status`, `pi-name`, `pi-direct-contact`.
-- **intermediate (1):** `showcase-section`.
+- **intermediate (2):** `program-dates` (tentative, applications via NSF ETAP), `showcase-section`.
 
 ## Notes for maintainers
 

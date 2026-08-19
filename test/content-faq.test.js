@@ -6,20 +6,24 @@
  * These are example-based content assertions (not property tests): they parse
  * the shipped HTML with node-html-parser and confirm the page presents the
  * content required by Requirements 7 (key dates + application process) and
- * 8 (dual application routes). They do not exercise runtime behavior.
+ * 8 (application route). They do not exercise runtime behavior.
+ *
+ * NOTE: Applications are now accepted ONLY through NSF ETAP (etap.nsf.gov).
+ * There is no on-site application form, and program/application dates are
+ * presented as tentative and subject to change (exact dates posted once
+ * confirmed). These tests reflect that policy.
  *
  * Assertions normalize whitespace and match on case-insensitive substrings /
  * regexes so meaning-preserving wording tweaks do not cause false failures,
  * while still verifying the substantive claim each acceptance criterion needs.
  *
  * Covered:
- *   7.1 application timeline (open date, deadline WITH time zone,
- *       decision-notification date, program dates)
+ *   7.1 application timeline (tentative: open window, deadline, decisions,
+ *       program dates) presented as subject to change
  *   7.2 required materials list
  *   7.3 FAQ topics
- *   7.4 "choose to apply" links to the Application_Form and to ETAP
- *   7.5 both links available wherever the application-process content is shown
- *   8.1 dual-route statement (site + NSF ETAP)
+ *   7.4 applying routes applicants to the NSF ETAP application
+ *   8.1 ETAP-only application-route statement
  *   8.2 link to the NSF ETAP application
  */
 
@@ -54,55 +58,47 @@ function assertContains(needle, message) {
   }
 }
 
-/** True if an anchor's href points at the on-site Application_Form. */
-function isApplyHref(href) {
-  return /(^|\/)apply\.html(\?|#|$)/i.test(href || '');
-}
-
 /** True if an anchor's href points at the NSF ETAP route. */
 function isEtapHref(href) {
   return /etap\.nsf\.gov/i.test(href || '');
 }
 
+/** True if an anchor's href points at the (removed) on-site Application_Form. */
+function isApplyHref(href) {
+  return /(^|\/)apply\.html(\?|#|$)/i.test(href || '');
+}
+
 // ---------------------------------------------------------------------------
-// Requirement 7.1: Application timeline
+// Requirement 7.1: Application timeline (tentative, subject to change)
 // ---------------------------------------------------------------------------
 
-test('7.1 presents the application OPEN date', () => {
+test('7.1 presents the timeline as tentative and subject to change', () => {
+  assertContains(/tentative/i, 'missing a "tentative" framing for the timeline');
+  assertContains(/subject to change/i, 'missing a "subject to change" statement');
+  assertContains(/posted (?:on this page|here)/i,
+    'missing a statement that exact dates will be posted once confirmed');
+});
+
+test('7.1 presents the application OPEN milestone', () => {
   assertContains(/applications open/i, 'missing an "applications open" milestone');
-  assertContains(/nov\w*\.?\s*1,?\s*2026/i, 'missing the application open date (Nov 1, 2026)');
 });
 
-test('7.1 presents the application DEADLINE with a time zone', () => {
+test('7.1 presents the application DEADLINE milestone', () => {
   assertContains(/application deadline/i, 'missing an "application deadline" milestone');
-  assertContains(/feb\w*\.?\s*15,?\s*2027/i, 'missing the application deadline date (Feb 15, 2027)');
-  // The deadline must carry an explicit clock time AND an explicit time zone
-  // (e.g. "11:59 p.m. CT" / Central Time), not just a bare date.
-  assert.ok(
-    /\d{1,2}:\d{2}\s*(?:a\.?m\.?|p\.?m\.?)\s*(?:C(?:entral)?\.?\s*T(?:ime)?|central time)/i.test(text),
-    'application deadline is missing an explicit clock time with a time zone (e.g. 11:59 p.m. CT / Central Time)',
-  );
 });
 
-test('7.1 presents the DECISION-notification date', () => {
-  assertContains(/decisions? (?:announced|notified|by)/i, 'missing a decision-notification milestone');
-  assertContains(/mar\w*\.?\s*20,?\s*2027/i, 'missing the decision-notification date (Mar 20, 2027)');
+test('7.1 presents the DECISION milestone', () => {
+  assertContains(/decisions? (?:announced|notified|by)/i, 'missing a decision milestone');
 });
 
-test('7.1 presents the PROGRAM dates', () => {
+test('7.1 presents the PROGRAM (in residence) milestone', () => {
   assertContains(/program in residence|in residence|program dates/i, 'missing a program-dates milestone');
-  assertContains(/jun\w*\.?\s*1\s*(?:to|-|–|—)\s*jul\w*\.?\s*24,?\s*2027/i,
-    'missing the eight-week program dates (Jun 1 to Jul 24, 2027)');
+  assertContains(/eight[\s-]?week|8[\s-]?week/i, 'missing the eight-week program duration');
 });
 
 // ---------------------------------------------------------------------------
 // Requirement 7.2: Required application materials
 // ---------------------------------------------------------------------------
-
-test('7.2 lists account + verified email', () => {
-  assertContains(/account with a verified email|verified email/i,
-    'missing the account + verified-email requirement');
-});
 
 test('7.2 lists eligibility confirmation', () => {
   assertContains(/confirmation of (?:nsf )?eligibility|confirm(?:ation)?.*eligib/i,
@@ -171,52 +167,35 @@ test('7.3 answers the accommodations question', () => {
 });
 
 // ---------------------------------------------------------------------------
-// Requirement 7.4 / 8.2: Links to the Application_Form and the ETAP route
+// Requirement 7.4 / 8.2: Link to the NSF ETAP application (the only route)
 // ---------------------------------------------------------------------------
-
-test('7.4 provides a link to the on-site Application_Form (/apply.html)', () => {
-  const links = main.querySelectorAll('a').filter((a) => isApplyHref(a.getAttribute('href')));
-  assert.ok(links.length > 0, 'missing a link to the Application_Form (/apply.html)');
-});
 
 test('7.4 / 8.2 provides a link to the NSF ETAP route (etap.nsf.gov)', () => {
   const links = main.querySelectorAll('a').filter((a) => isEtapHref(a.getAttribute('href')));
   assert.ok(links.length > 0, 'missing a link to the NSF ETAP application (etap.nsf.gov)');
 });
 
-// ---------------------------------------------------------------------------
-// Requirement 8.1: Dual-route statement (site + NSF ETAP)
-// ---------------------------------------------------------------------------
-
-test('8.1 states applications are accepted through the site and via NSF ETAP', () => {
-  assertContains(/apply through this site or via nsf etap|through this site.*etap|site.*and.*etap/i,
-    'missing the dual-route (site + NSF ETAP) statement');
+test('7.4 no longer links to a removed on-site application form (/apply.html)', () => {
+  const links = main.querySelectorAll('a').filter((a) => isApplyHref(a.getAttribute('href')));
+  assert.equal(links.length, 0, 'the on-site application form has been removed; no /apply.html links expected');
 });
 
 // ---------------------------------------------------------------------------
-// Requirement 7.5: Both routes available wherever the "choose to apply"
-// application-process content is presented.
+// Requirement 8.1: ETAP-only application-route statement
 // ---------------------------------------------------------------------------
 
-test('7.5 exposes BOTH the Application_Form and ETAP links in the applying section', () => {
-  // The "choose to apply" content lives in the Key-dates / Applying section.
+test('8.1 states applications are accepted only through NSF ETAP', () => {
+  assertContains(/only through nsf etap|accepted only through nsf etap|submitted only through nsf etap|through nsf etap/i,
+    'missing the NSF-ETAP-only application-route statement');
+});
+
+// ---------------------------------------------------------------------------
+// Requirement 7.5: The applying section exposes the ETAP route.
+// ---------------------------------------------------------------------------
+
+test('7.5 exposes the ETAP application link in the applying/dates section', () => {
   const datesSection = main.querySelector('#dates') || main;
   const sectionLinks = datesSection.querySelectorAll('a');
-  const hasApply = sectionLinks.some((a) => isApplyHref(a.getAttribute('href')));
   const hasEtap = sectionLinks.some((a) => isEtapHref(a.getAttribute('href')));
-  assert.ok(hasApply, 'the applying section must expose the Application_Form (/apply.html) link');
   assert.ok(hasEtap, 'the applying section must expose the NSF ETAP (etap.nsf.gov) link');
-});
-
-test('7.5 never presents the apply CTA without an ETAP route also available on the page', () => {
-  // If any "apply" CTA is present, an ETAP route must be present too, so the
-  // "choose to apply" path is never shown without both options.
-  const applyLinks = main.querySelectorAll('a').filter((a) => isApplyHref(a.getAttribute('href')));
-  const etapLinks = main.querySelectorAll('a').filter((a) => isEtapHref(a.getAttribute('href')));
-  if (applyLinks.length > 0) {
-    assert.ok(
-      etapLinks.length > 0,
-      'an apply CTA is present but no ETAP route is available on the same page',
-    );
-  }
 });
